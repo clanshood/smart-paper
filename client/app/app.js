@@ -1,12 +1,17 @@
 'use strict';
 
 angular.module('smartPaperApp', [
+  'ngAnimate',
+  'ngAria',
   'ngCookies',
+  'ngMessages',
   'ngResource',
   'ngSanitize',
   'btford.socket-io',
   'ui.router',
-  'ui.bootstrap'
+  'ngTouch',
+  'velocity.ui',
+  'ngMaterial'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
