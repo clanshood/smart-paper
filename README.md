@@ -18,4 +18,4 @@ Juga silahkan lihat [persiapan proyek](https://github.com/clanshood/smart-paper-
 
 ## Authors
  - Bent @clanshood
- - Mahardika @moszes
+ - Mahardhika @moszes
