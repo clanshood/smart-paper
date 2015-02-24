@@ -27,8 +27,21 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-    <div ui-view=""></div>
+    <!-- app:start -->
+    <div class="app" layout="row" layout-fill>
+      <!-- app sidenav is always available on app, one time render (onload). -->
+      <!-- sidenav:start -->
+      <md-sidenav layout="column" md-component-id="app-menu" class="app-menu md-primary md-sidenav-left md-whiteframe-z1" md-is-locked-open="true">
+      </md-sidenav>
+      <!-- sidenav:start -->
+
+
+      <!-- This is the content of app, load dinamically using route view -->
+      <!-- Why use dinamic layout: couse avery app may have different structure, that can give us to explore any posibility -->
+      <!-- content:start -->
+      <div class="app-content" flex ui-view></div>
+      <!-- content:end -->
+    </div><!-- app:end -->
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>

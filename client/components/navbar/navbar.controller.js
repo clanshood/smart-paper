@@ -3,7 +3,7 @@
 angular.module('smartPaperApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
     $scope.menu = [{
-      'title': 'Home',
+      'title': 'Smart Admin',
       'link': '/'
     }];
 
