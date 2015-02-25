@@ -5,10 +5,13 @@ angular.module('smartPaperApp')
 
     // required properties
     $scope.isSidenavControll = true;
+    $scope.isSearchBtn = true;
     $scope.brand = "Smart Admin";
     $scope.size = "";
     // theming
     $scope.theme = "default";
+    // menus
+    $scope.menu = [{}];
 
 
     // optional properties

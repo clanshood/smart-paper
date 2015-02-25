@@ -1,8 +1,17 @@
 <md-toolbar class="app-bar">
   <div class="md-toolbar-tools" ng-class="{{size}}">
+    <!-- rendering navbar sidebar control:ifany -->
+
+    <!-- rendering navbar brand -->
     <span>{{ brand }}</span>
     <!-- fill up the space between left and right area -->
+
+    <!-- pull to right -->
     <span flex></span>
+
+    <!-- rendering navbar btn -->
     <md-button ng-repeat="btn in buttons" ng-if="(btn.needAuth === isLoggedIn())" ng-href="{{btn.link}}" ng-click="{{btn.action}}">{{btn.label}}</md-button>
+
+    <!-- rendering navbar menu -->
   </div>
 </md-toolbar>
