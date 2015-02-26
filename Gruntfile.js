@@ -510,7 +510,8 @@ module.exports = function (grunt) {
         files: {
           '<%= yeoman.client %>/app/app.scss': [
             '<%= yeoman.client %>/{app,components}/**/*.{scss,sass}',
-            '!<%= yeoman.client %>/app/app.{scss,sass}'
+            '!<%= yeoman.client %>/app/app.{scss,sass}',
+            '!<%= yeoman.client %>/app/scss/*.{scss,sass}'
           ]
         },
         options: {
@@ -520,8 +521,7 @@ module.exports = function (grunt) {
             return '@import \'' + filePath + '\';';
           },
           starttag: '// injector',
-          endtag: '// endinjector',
-          ignorePath: '<%= yeoman.client %>/app/scss/*.{scss,sass}'
+          endtag: '// endinjector'
         }
       },
 
