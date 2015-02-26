@@ -11,7 +11,13 @@ angular.module('smartPaperApp')
     // theming
     $scope.theme = "default";
     // menus
-    $scope.menu = [{}];
+    $scope.menu = [{
+      display: true,
+      lists: [{
+        label: 'Menu 1',
+        link: ''
+      }]
+    }];
 
 
     // optional properties
