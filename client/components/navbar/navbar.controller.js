@@ -6,7 +6,7 @@ angular.module('smartPaperApp')
     // required properties
     $scope.isSidenavControll = true;
     $scope.isSearchBtn = true;
-    $scope.brand = "Smart Admin";
+    $scope.brand = "Smart Paper";
     $scope.size = "";
     // theming
     $scope.theme = "default";
@@ -28,23 +28,29 @@ angular.module('smartPaperApp')
       label: 'Signup',
       needAuth: false,
       link: '/signup',
-      action: false
+      action: ''
     },{
       label: 'Login',
       needAuth: false,
       link: '/login',
-      action: false
+      action: ''
     },{
       label: 'Settings',
       needAuth: true,
       link: '/settings',
-      action: false
+      action: ''
     },{
       label: 'Logout',
       needAuth: true,
       link: '/logout',
-      action: 'logout()'
+      action: 'logout'
     }];
+
+    $scope.btnEvent = function(action){
+      if (action || action !== '') {
+        $scope.$eval(action)();
+      };
+    };
 
     $scope.logout = function() {
       Auth.logout();

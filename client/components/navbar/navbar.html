@@ -1,7 +1,7 @@
 <md-toolbar class="app-bar">
   <div class="md-toolbar-tools" ng-class="{{size}}">
     <!-- rendering navbar sidebar control:ifany -->
-    <md-button ng-if="isSidenavControll" ng-click="">sdCtrl</md-button>
+    <md-button aria-label="toggle sidebar" ng-if="isSidenavControll" ng-click=""><md-icon md-font-icon="flaticon flaticon-md flaticon-menu55" alt="toggle sidebar"></md-icon></md-button>
 
     <!-- rendering navbar brand -->
     <span>{{ brand }}</span>
@@ -11,12 +11,12 @@
     <span flex></span>
 
     <!-- rendering navbar search -->
-    <md-button ng-if="isSearchBtn" ng-click="">Search</md-button>
+    <md-button ng-if="isSearchBtn" ng-click="" aria-label="search"><md-icon md-font-icon="flaticon flaticon-md flaticon-search100" alt="search"></md-icon></md-button>
 
     <!-- rendering navbar btn -->
-    <md-button ng-repeat="btn in buttons" ng-if="(btn.needAuth === isLoggedIn())" ng-href="{{btn.link}}" ng-click="{{btn.action}}">{{btn.label}}</md-button>
+    <md-button ng-repeat="btn in buttons" ng-if="(btn.needAuth === isLoggedIn())" ng-href="{{btn.link}}" ng-click="btnEvent(btn.action)">{{btn.label}}</md-button>
 
     <!-- rendering navbar menu -->
-    <md-button ng-if="isSidenavControll" ng-click="">Menu</md-button>
+    <md-button ng-if="isSidenavControll" ng-click="" aria-label="more"><md-icon md-font-icon="flaticon flaticon-md flaticon-show8" alt="more"></md-icon></md-button>
   </div>
 </md-toolbar>
