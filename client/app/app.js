@@ -14,6 +14,12 @@ angular.module('smartPaperApp', [
   'ngMaterial'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+    $stateProvider
+      .state('landing', {
+        url: '/',
+        templateUrl: 'app/account/login/login.html',
+        controller: 'LoginCtrl'
+      });
     $urlRouterProvider
       .otherwise('/');
 
