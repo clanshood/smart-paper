@@ -1,0 +1,53 @@
+/**
+ * App Icons
+ */
+$icon-base-size: 24px !default;
+.flaticon{
+  display: inline-block;
+  font: normal normal normal 20px/1 Flaticon; // shortening font declaration
+  font-size: inherit; // can't have font-size inherit on line above, so need to override
+  text-rendering: auto; // optimizelegibility throws things off #1094
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(0, 0); // ensures no half-pixel rendering in firefox
+  color: inherit;
+
+  &.flaticon-black{
+    color: rgba(#000, 1);
+
+    &.flaticon-active{
+      color: rgba(#000, .54);
+    }
+
+    &.flaticon-inactive{
+      color: rgba(#000, .26);
+    }
+  }
+
+  &.flaticon-with{
+    &,
+    &.flaticon-active{
+      color: rgba(#fff, 1);
+    }
+
+    &.flaticon-inactive{
+      color: rgba(#fff, .3);
+    }
+  }
+
+  &.flaticon-xs{
+    font-size: ($baseline-grid);
+  }
+  &.flaticon-sm{
+    font-size: ($baseline-grid*2);
+  }
+  &.flaticon-md{
+    font-size: ($baseline-grid*3);
+  }
+  &.flaticon-lg{
+    font-size: ($baseline-grid*4);
+  }
+  &.flaticon-xg{
+    font-size: ($baseline-grid*5);
+  }
+}
