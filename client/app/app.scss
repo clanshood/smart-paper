@@ -11,11 +11,18 @@
 }
 
 // Component styles are injected through grunt
+// ignore injector
+@import 'scss/_variables.scss';
+@import 'scss/_mixins.scss';
+@import 'scss/_icons.scss';
+@import 'scss/_flaticon.scss';
 // injector
 @import 'account/login/login.scss';
 @import 'admin/admin.scss';
 @import 'main/main.scss';
+@import 'scss/_flaticon.scss';
 @import 'scss/_icons.scss';
-@import 'scss/flaticon.scss';
+@import 'scss/_mixins.scss';
+@import 'scss/_variables.scss';
 @import 'modal/modal.scss';
 // endinjector
