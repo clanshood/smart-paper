@@ -1,7 +1,7 @@
 <md-toolbar class="app-bar">
   <div class="md-toolbar-tools" ng-class="{{size}}">
     <!-- rendering navbar sidebar control:ifany -->
-    <md-button aria-label="toggle sidebar" ng-if="isSidenavControll" ng-click=""><md-icon md-font-icon="flaticon flaticon-md flaticon-menu55" alt="toggle sidebar"></md-icon></md-button>
+    <md-button aria-label="toggle sidebar" ng-if="isSidenavControll" ng-click="toggleSidenav()"><md-icon md-font-icon="flaticon flaticon-md flaticon-menu55" alt="toggle sidebar"></md-icon></md-button>
 
     <!-- rendering navbar brand -->
     <span>{{ brand }}</span>

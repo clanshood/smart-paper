@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('smartPaperApp')
-  .controller('NavbarCtrl', function ($scope, $location, Auth) {
+  .controller('NavbarCtrl', function ($scope, $location, Auth, $mdSidenav) {
 
     // required properties
     $scope.isSidenavControll = true;
@@ -18,6 +18,11 @@ angular.module('smartPaperApp')
         link: ''
       }]
     }];
+
+    // toggle sidenav
+    $scope.toggleSidenav = function() {
+      $mdSidenav('app-sidenav').toggle();
+    };
 
 
     // optional properties
