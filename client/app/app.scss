@@ -22,3 +22,32 @@
 @import 'main/main.scss';
 @import 'modal/modal.scss';
 // endinjector
+
+
+.browsehappy {
+  margin: 0;
+  padding: 8px 16px;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background-color: #f44336;
+  color: #fff;
+  a{
+    &,
+    &:focus,
+    &:active,
+    &:visited{
+      color: rgba(#fff, 54);
+    }
+    &:hover{
+      color: rgba(#fff, 12);
+    }
+  }
+}
+
+.app-content{
+  background-color: #EEEEEE;
+}
