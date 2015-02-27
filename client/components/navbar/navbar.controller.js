@@ -1,23 +1,10 @@
 'use strict';
 
 angular.module('smartPaperApp')
-  .controller('NavbarCtrl', function ($scope, $location, Auth, $mdSidenav) {
+  .controller('NavbarCtrl', function ($scope, $location, Auth, $mdSidenav, $navbar) {
 
     // required properties
-    $scope.isSidenavControll = true;
-    $scope.isSearchBtn = true;
-    $scope.brand = "Smart Paper";
-    $scope.size = "";
-    // theming
-    $scope.theme = "default";
-    // menus
-    $scope.menu = [{
-      display: true,
-      lists: [{
-        label: 'Menu 1',
-        link: ''
-      }]
-    }];
+    $scope.navbar = $navbar.get();
 
     // toggle sidenav
     $scope.toggleSidenav = function() {
@@ -29,26 +16,26 @@ angular.module('smartPaperApp')
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
-    $scope.buttons = [{
-      label: 'Signup',
+    $scope.navbar.buttons = [{
+      label: "Signup",
       needAuth: false,
-      link: '/signup',
-      action: ''
+      link: "/signup",
+      action: ""
     },{
-      label: 'Login',
+      label: "Login",
       needAuth: false,
-      link: '/login',
-      action: ''
+      link: "/login",
+      action: ""
     },{
-      label: 'Settings',
+      label: "Settings",
       needAuth: true,
-      link: '/settings',
-      action: ''
+      link: "/settings",
+      action: ""
     },{
-      label: 'Logout',
+      label: "Logout",
       needAuth: true,
-      link: '/logout',
-      action: 'logout'
+      link: "/logout",
+      action: "logout"
     }];
 
     $scope.btnEvent = function(action){
