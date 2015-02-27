@@ -2,7 +2,8 @@
 
 angular.module('smartPaperApp')
   .service('$navbar', function () {
-    var options = {
+    // default settings for navbar
+    var defaults = {
       isSidenavControll: true,
       isSearchBtn: true,
       brand: "Smart Paper",
@@ -25,12 +26,12 @@ angular.module('smartPaperApp')
     };
 
     return{
-      set: function(opt){
-        options = angular.extend(options, opt);
-        return options;
+      set: function(settings){
+        defaults = angular.extend(defaults, settings);
+        return defaults;
       },
       get: function(){
-        return options;
+        return defaults;
       }
     };
   });
