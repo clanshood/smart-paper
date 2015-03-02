@@ -1,1 +1,20 @@
+.login-container{
+  position: relative;
+  padding: ($baseline-grid * 2) ($baseline-grid * 4);
+  width: 360px;
+  height: auto;
+  background-color: #fff;
+}
 
+.login-logo{
+  width: ($baseline-grid * 12);
+  margin: ($baseline-grid * 6) 0;
+}
+
+// lower then 600px screen width
+@media (max-width: ($layout-breakpoint-sm - 1) ) {
+  .login-conteiner{
+    background-color: transparent;
+    width: 320px;
+  }
+}
