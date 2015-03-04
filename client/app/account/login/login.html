@@ -7,18 +7,17 @@
     </div>
     <form class="login-form" name="loginForm" ng-submit="login(loginForm)" novalidate>
       <md-input-container>
-        <label>Email</label>
-        <input name="email" type="email" ng-model="user.email" required>
-        <div ng-messages="loginForm.email.$error">
-          <div ng-message="required">email harus di isi.</div>
-          <div ng-message="email">email salah, silahkan periksa kembali.</div>
+        <label>Username</label>
+        <input name="username" type="text" ng-model="user.username" required>
+        <div ng-messages="loginForm.username.$error">
+          <div ng-message="required">masukkan username anda.</div>
         </div>
       </md-input-container>
       <md-input-container>
         <label>Password</label>
         <input name="password" type="password" ng-model="user.password" required>
         <div ng-messages="loginForm.password.$error">
-          <div ng-message="required">password harus di isi.</div>
+          <div ng-message="required">masukkan password anda.</div>
         </div>
       </md-input-container>
       <br>
