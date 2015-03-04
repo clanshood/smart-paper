@@ -5,6 +5,12 @@ angular.module('smartPaperApp')
     $scope.user = {};
     $scope.errors = {};
 
+    // disable login page for auth user
+    if ( Auth.isLoggedIn() ) {
+      // Logged in, redirect to home
+      $location.path('/');
+    };
+
     $scope.login = function(form) {
       $scope.submitted = true;
 

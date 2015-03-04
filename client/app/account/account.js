@@ -11,7 +11,8 @@ angular.module('smartPaperApp')
       .state('signup', {
         url: '/signup',
         templateUrl: 'app/account/signup/signup.html',
-        controller: 'SignupCtrl'
+        controller: 'SignupCtrl',
+        authenticate: true
       })
       .state('settings', {
         url: '/settings',
