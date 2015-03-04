@@ -15,7 +15,7 @@ angular.module('smartPaperApp')
         })
         .then( function() {
           // Logged in, redirect to home
-          $location.path('/settings');
+          $location.path('/');
         })
         .catch( function(err) {
           $scope.errors.other = err.message;

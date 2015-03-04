@@ -58,3 +58,19 @@
   width: 100%;
   display: block;
 }
+
+
+// form validation
+md-input-container{
+  [ng-messages],
+  ng-messages{
+    visibility: hidden;
+  }
+
+  &.md-input-invalid{
+    [ng-messages],
+    ng-messages{
+      visibility: visible;
+    }
+  }
+}
