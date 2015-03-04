@@ -13,7 +13,7 @@ angular.module('smartPaperApp', [
   'velocity.ui',
   'ngMaterial'
 ])
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $mdThemingProvider) {
     $stateProvider
       .state('landing', {
         url: '/',
@@ -22,6 +22,26 @@ angular.module('smartPaperApp', [
       });
     $urlRouterProvider
       .otherwise('/');
+
+    $mdThemingProvider.theme('default')
+      .primaryPalette('purple', {
+        'default': '500',
+        'hue-1': '900',
+        'hue-2': 'A700',
+        'hue-3': 'A100',
+      })
+      .accentPalette('teal', {
+        'default': '500',
+        'hue-1': '900',
+        'hue-2': 'A700',
+        'hue-3': 'A100',
+      })
+      .warnPalette('red', {
+        'default': '500',
+        'hue-1': '900',
+        'hue-2': 'A700',
+        'hue-3': 'A100',
+      });
 
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
