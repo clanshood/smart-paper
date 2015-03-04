@@ -1,24 +1,26 @@
-<navbar ng-controller="NavbarLoginCtrl"></navbar>
+<!-- <navbar ng-controller="NavbarLoginCtrl"></navbar> -->
 
-<div layout="column" layout-align="start center" flex>
-  <img ng-src="assets/images/yeoman.png" alt="smart paper" class="login-logo" />
+<div class="login-paper" layout="column" layout-align="center center" flex>
   <div class="login-container">
+    <div class="login-logo">
+      <img ng-src="assets/images/yeoman.png" alt="smart paper" />
+    </div>
     <form class="login-form" name="loginForm" ng-submit="login(loginForm)" novalidate>
       <md-input-container>
-        <label>Username</label>
-        <input name="username" ng-model="user.username" required>
+        <label>Email</label>
+        <input name="email" type="email" ng-model="user.email" required>
         <div ng-messages="loginForm.description.$error">
-          <div ng-message="required">username harus di isi!</div>
+          <div ng-message="required">email harus di isi!</div>
         </div>
       </md-input-container>
       <md-input-container>
         <label>Password</label>
-        <input name="password" ng-model="user.password" required>
+        <input name="password" type="password" ng-model="user.password" required>
         <div ng-messages="loginForm.description.$error">
           <div ng-message="required">password harus di isi!</div>
         </div>
       </md-input-container>
-      <md-button class="md-raised md-button-full">Sign In</md-button>
+      <md-button class="md-raised md-button-full md-accent">Sign In</md-button>
     </form>
   </div>
 </div>
