@@ -1,7 +1,7 @@
-<md-toolbar class="app-bar">
+<md-toolbar class="app-bar" md-scroll-shrink="{{scrollShrink}}" md-shrink-speed-factor="{{scrollShrinkSpeed}}">
   <div class="md-toolbar-tools" ng-class="{{size}}">
     <!-- rendering navbar sidebar control:ifany -->
-    <md-button aria-label="toggle sidebar" ng-if="navbar.isSidenavControll" ng-click="toggleSidenav()"><md-icon md-font-icon="flaticon flaticon-md flaticon-menu55" alt="toggle sidebar"></md-icon></md-button>
+    <md-button class="first" aria-label="toggle sidebar" ng-if="navbar.isSidenavControll" ng-click="toggleSidenav()"><md-icon md-font-icon="flaticon flaticon-md flaticon-menu55" alt="toggle sidebar"></md-icon></md-button>
 
     <!-- rendering navbar brand -->
     <span>{{ navbar.brand }}</span>
@@ -17,6 +17,6 @@
     <md-button ng-repeat="btn in navbar.buttons" ng-if="(btn.needAuth === isLoggedIn())" ng-href="{{btn.link}}" ng-click="btnEvent(btn.action)">{{btn.label}}</md-button>
 
     <!-- rendering navbar menu -->
-    <md-button ng-if="navbar.menu.display" ng-click="" aria-label="more"><md-icon md-font-icon="flaticon flaticon-md flaticon-show8" alt="more"></md-icon></md-button>
+    <md-button class="last" ng-if="navbar.menu.display" ng-click="" aria-label="more"><md-icon md-font-icon="flaticon flaticon-md flaticon-show8" alt="more"></md-icon></md-button>
   </div>
 </md-toolbar>

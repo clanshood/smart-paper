@@ -1,0 +1,14 @@
+.app-bar{
+  .md-toolbar-tools > *{
+    margin-right: $baseline-grid;
+  }
+  .md-toolbar-tools{
+    > .first{
+      margin-left: -($baseline-grid*1);
+      margin-right: $baseline-grid;
+    }
+    > .last{
+      margin-right: -($baseline-grid*1);
+    }
+  }
+}

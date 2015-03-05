@@ -4,6 +4,8 @@ angular.module('smartPaperApp')
   .service('$navbar', function () {
     // default settings for navbar
     var defaults = {
+      scrollShrink: false,
+      scrollShrinkSpeed: 0.5,
       isSidenavControll: true,
       isSearchBtn: true,
       brand: "Smart Paper",
