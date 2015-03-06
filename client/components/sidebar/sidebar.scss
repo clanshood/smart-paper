@@ -1,0 +1,37 @@
+.sidebar{
+  .sidebar-head{
+    background-image: url(../assets/images/bg-cover.png);
+    background-size: cover;
+  }
+
+  md-content{
+    background-color: transparent;
+    overflow: hidden;
+  }
+
+  .user-avatar{
+    position: relative;
+    display: inline-block;
+    img{
+      width: 56px;
+      height: auto;
+      border: 1px solid transparent;
+      border-radius: 56px;
+    }
+  }
+
+  .user-displayname,
+  .user-desc{
+    font-size: 14px;
+    display: block;
+    color: #fff;
+  }
+  .user-displayname{
+    font-weight: 500;
+  }
+  .user-act{
+    line-height: 1;
+    color: #fff;
+    font-size: 1.2em;
+  }
+}
