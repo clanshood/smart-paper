@@ -1,9 +1,12 @@
-<md-sidenav md-component-id="app-sidenav" class="app-sidenav md-primary md-sidenav-left md-whiteframe-z1" md-is-locked-open="">
+<md-sidenav ng-if="isLoggedIn() && isAdmin()" md-component-id="app-sidenav" class="app-sidenav md-primary md-sidenav-left md-whiteframe-z1" md-is-locked-open="">
   <md-toolbar class="md-tall sidebar-head">
     <md-content class="md-padding">
       <span class="user-avatar"><img src="assets/users/avatar/1.jpg" alt="ubah avatar"></span>
       <span class="user-displayname">{{user.name}}</span>
-      <span class="user-act pull-right"><i class="flaticon flaticon-drop25"></i></span>
+      <span class="user-act pull-right">
+        <md-button href="/logout" ng-click="logout()" aria-label="logout">
+        <i class="flaticon flaticon-drop25"></i>
+      </md-button></span>
       <span class="user-desc">{{user.email}}</span>
     </md-content>
   </md-toolbar>
