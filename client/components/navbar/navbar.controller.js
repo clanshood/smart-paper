@@ -18,7 +18,7 @@ angular.module('smartPaperApp')
     $scope.getCurrentUser = Auth.getCurrentUser;
     $scope.navbar.buttons = [{
       label: "Signup",
-      needAuth: false,
+      needAuth: true,
       link: "/signup",
       action: ""
     },{
