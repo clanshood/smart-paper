@@ -26,7 +26,7 @@ angular.module('smartPaperApp', [
 
     $mdThemingProvider.theme('default')
       .primaryPalette('purple', {
-        'default': '500',
+        'default': '600',
         'hue-1': '900',
         'hue-2': 'A700',
         'hue-3': 'A100',
@@ -38,7 +38,7 @@ angular.module('smartPaperApp', [
         'hue-3': 'A100',
       })
       .warnPalette('red', {
-        'default': '500',
+        'default': '600',
         'hue-1': '900',
         'hue-2': 'A700',
         'hue-3': 'A100',
