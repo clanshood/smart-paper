@@ -1,7 +1,11 @@
 .sidebar{
   .sidebar-head{
-    background-image: url(../assets/images/bg-cover.png);
+    background-image: url(../assets/images/covers/default.jpg);
     background-size: cover;
+  }
+
+  md-toolbar{
+    margin-bottom: $baseline-grid;
   }
 
   md-content{
@@ -34,7 +38,59 @@
     color: #fff;
     font-size: 1.2em;
     .md-button{
-      top: -4px;
+      top: -6px;
+    }
+  }
+}
+
+
+.sidebar-menu{
+  margin: $baseline-grid 0 0;
+  padding: 0;
+  list-style: none;
+  .menu-list{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    > a{
+      display: block;
+      padding: $baseline-grid ($baseline-grid*2);
+      color: $fg-dark;
+      text-decoration: none;
+      line-height: 32px;
+
+      .menu-icon{
+        display: block;
+        float: left;
+        width: 72px - ($baseline-grid*2);
+        color: $fg-darkgrey;
+        i{
+          line-height: 32px;
+        }
+      }
+      .menu-label{
+        display: block;
+        color: inherit;
+      }
+
+      &:hover,
+      &:focus,
+      &:active{
+        color: #000;
+      }
+    }
+
+    &.active{
+      a{
+        background-color: #e8e8e8;
+        color: #8E24AA;
+
+        .menu-icon{
+          color: inherit;
+        }
+      }
     }
   }
 }

@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('smartPaperApp')
-  .controller('SidebarCtrl', function ($scope, $window, Auth) {
+  .controller('SidebarCtrl', function ($scope, $window, $location, Auth) {
     $scope.menus = [
-      { label: 'Repositori', icon: 'flaticon-briefcase50', link: '/repositori' },
-      { label: 'Repositori', icon: 'flaticon-briefcase50', link: '/repositori' },
-      { label: 'Repositori', icon: 'flaticon-briefcase50', link: '/repositori' },
-      { label: 'Repositori', icon: 'flaticon-briefcase50', link: '/repositori' }
+      { label: 'Repositori', icon: 'flaticon flaticon-md flaticon-briefcase50', route: '/repositori' },
+      { label: 'Repositori', icon: 'flaticon flaticon-md flaticon-briefcase50', route: '/repositori' },
+      { label: 'Repositori', icon: 'flaticon flaticon-md flaticon-briefcase50', route: '/' },
+      { label: 'Repositori', icon: 'flaticon flaticon-md flaticon-briefcase50', route: '/repositori' }
     ];
 
     $scope.isLoggedIn = Auth.isLoggedIn;

@@ -1,13 +1,24 @@
-<md-sidenav ng-if="isLoggedIn() && isAdmin()" md-component-id="app-sidenav" class="app-sidenav md-primary md-sidenav-left md-whiteframe-z1" md-is-locked-open="">
+<md-sidenav ng-if="isLoggedIn() && isAdmin()" md-component-id="app-sidenav" class="app-sidenav md-sidenav-left md-whiteframe-z1" md-is-locked-open="" flex>
   <md-toolbar class="md-tall sidebar-head">
     <md-content class="md-padding">
       <span class="user-avatar"><img src="assets/users/avatar/1.jpg" alt="ubah avatar"></span>
       <span class="user-displayname">{{user.name}}</span>
       <span class="user-act pull-right">
-        <md-button href="/logout" ng-click="logout()" aria-label="logout">
-        <i class="flaticon flaticon-drop25"></i>
-      </md-button></span>
+        <md-button href="/logout" ng-click="logout()" aria-label="keluar">
+          <md-tooltip md-direction="left">Keluar</md-tooltip>
+          <i class="flaticon flaticon-exit13"></i>
+        </md-button></span>
       <span class="user-desc">{{user.email}}</span>
     </md-content>
   </md-toolbar>
+  <md-content>
+    <ul class="sidebar-menu">
+      <li class="menu-list" md-ink-ripple="#aaa" md-ripple-size="full" ng-repeat="menu in menus" ng-class="{active: isActive(menu.route)}">
+        <a ng-href="{{menu.route}}">
+          <span class="menu-icon"><i class="{{menu.icon}}"></i></span>
+          <span class="menu-label">{{menu.label}}</span>
+        </a>
+      </li>
+    </ul>
+  </md-content>
 </md-sidenav>
