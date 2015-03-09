@@ -57,7 +57,7 @@
     > a{
       display: block;
       padding: $baseline-grid ($baseline-grid*2);
-      color: $fg-dark;
+      color: $base-dark;
       text-decoration: none;
       line-height: 32px;
 
@@ -65,7 +65,7 @@
         display: block;
         float: left;
         width: 72px - ($baseline-grid*2);
-        color: $fg-darkgrey;
+        color: $base-darkgrey;
         i{
           line-height: 32px;
         }
@@ -78,14 +78,14 @@
       &:hover,
       &:focus,
       &:active{
-        color: #000;
+        color: $base-dark-solid;
       }
     }
 
     &.active{
       a{
-        background-color: #e8e8e8;
-        color: #8E24AA;
+        background-color: $base-highlight;
+        color: $base-primary;
 
         .menu-icon{
           color: inherit;
