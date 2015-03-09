@@ -1,12 +1,20 @@
 // Font Variables
 $font-family: RobotoDraft, Roboto, 'Helvetica Neue', sans-serif !default;
 
-// Foreground Map
+// Colors Map
 // ------------------------------
-$fg-dark: rgba(#000,0.87);
-$fg-darkgrey: rgba(#000,0.54);
-$fg-light: rgba(#fff,0.54);
-$fg-lightgrey: rgba(#fff,0.87);
+$base-dark-solid: rgba(#000,1);
+$base-dark: rgba(#000,0.87);
+$base-darkgrey: rgba(#000,0.54);
+$base-light-solid: rgba(#fff,1);
+$base-light: rgba(#fff,0.54);
+$base-lightgrey: rgba(#fff,0.87);
+
+// variants
+$base-highlight: #e8e8e8;
+$base-primary: #8E24AA;
+$base-accent: #009688;
+$base-warning: #E53935;
 
 
 // Layout
