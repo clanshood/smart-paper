@@ -13,7 +13,16 @@ angular.module('smartPaperApp')
       theme: "default",
       menu: {
         display: true,
-        lists: []
+        lists:[{
+          label: 'Map',
+          route: '/map'
+        },{
+          label: 'Books',
+          route: '/books'
+        },{
+          label: 'Apps',
+          route: '/apps'
+        }]
       },
       buttons: [
         /* sample obj
