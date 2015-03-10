@@ -55,8 +55,9 @@ angular.module('smartPaperApp')
           scope.$apply( scope.toggleOpen );
 
           if(scope.isOpen){
-            var x = element.children('.menus-dropdown');
-            console.log(x);
+            var items = element.children('.menus-dropdown')[1],
+                item = angular.element(items).children();
+            new Velocity(item, 'transition.slideDownIn', { stagger: 100, duration: 300 });
           }
         }
 
