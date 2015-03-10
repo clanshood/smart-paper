@@ -10,7 +10,7 @@ angular.module('smartPaperApp', [
   'btford.socket-io',
   'ui.router',
   'ngTouch',
-  'angular-velocity',
+  'velocity.ui',
   'ngMaterial'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $mdThemingProvider) {
