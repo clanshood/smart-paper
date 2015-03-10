@@ -17,15 +17,6 @@
     <md-button ng-repeat="btn in navbar.buttons" ng-if="(btn.needAuth === isLoggedIn())" ng-href="{{btn.link}}" ng-click="btnEvent(btn.action)">{{btn.label}}</md-button>
 
     <!-- rendering navbar menu -->
-    <menus class="menus last" ng-if="navbar.menu.display" ng-class="{open: isOpen()}">
-        <md-button ng-click="" aria-label="more">
-            <md-icon md-font-icon="flaticon flaticon-md flaticon-show8" alt="more"></md-icon>
-        </md-button>
-        <ul class="menus-dropdown">
-            <li ng-repeat="menu in navbar.menu.lists" md-ink-ripple="#aaa" md-ripple-size="full" class="menus-item" ng-class="{active: isActive(menu.route)}">
-                <a ng-href="{{menu.route}}">{{menu.label}}</a>
-            </li>
-        </ul>
-    </menus>
+    <menus class="last" ng-if="navbar.menu.display" data-items="navbar.menu.lists" data-icon="flaticon flaticon-md flaticon-show8" data-aria="more" data-align="right"></menus>
   </div>
 </md-toolbar>
