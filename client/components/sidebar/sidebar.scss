@@ -80,6 +80,9 @@
       &:active{
         color: $base-dark-solid;
       }
+      &:focus{
+        outline: 1px dotted $base-highlight;
+      }
     }
 
     &.active{
