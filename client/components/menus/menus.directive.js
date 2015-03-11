@@ -10,8 +10,9 @@ angular.module('smartPaperApp')
       },
       controller: 'MenusCtrl',
       link: function(scope, element, attrs){
-        // register class menus
+        // register class menus & tabindex
         element.addClass('menus');
+        element.attr('tabIndex', '-1');
         // prepare element properties
         var backdrop = $compile('<md-backdrop class="menus-backdrop md-opaque velocity-transition-fadeIn" ng-show="isOpen">')(scope),
             icon = (attrs.icon) ? '<md-icon md-font-icon="'+ attrs.icon +'" alt="'+ attrs.aria +'">' : '',
