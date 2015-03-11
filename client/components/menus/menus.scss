@@ -2,13 +2,6 @@ $baseline-menu: 48px;
 menus{
   position: relative;
 }
-.menus-item.ng-enter,
-.menus-item.ng-leave,
-.menus-item.ng-move {
-  /* notice how we're using animation instead of transition here */ 
-  -webkit-animation-delay:0.1s;
-  animation-delay:0.1s;
-}
 .menus-dropdown{
   list-style: none;
   position: absolute;
