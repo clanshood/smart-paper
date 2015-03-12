@@ -1,0 +1,14 @@
+.app-search{
+  position: absolute;
+  margin: 0 !important;;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 12px $baseline-grid 12px ($baseline-grid * 2);
+  z-index: $whiteframe-zindex-z3;
+  background-color: $base-highlight;
+}
+md-backdrop.md-opaque.md-default-theme.search-backdrop{
+  z-index: 1;
+}

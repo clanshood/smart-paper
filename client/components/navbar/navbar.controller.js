@@ -5,12 +5,24 @@ angular.module('smartPaperApp')
 
     // required properties
     $scope.navbar = $navbar.get();
+    $scope.isOpenSearch = false;
 
     // toggle sidenav
     $scope.toggleSidenav = function() {
       $mdSidenav('app-sidenav').toggle();
     };
 
+    // app search actions
+    $scope.openSearch = function() {
+      $scope.isOpenSearch = true;
+    };
+    $scope.closeSearch = function() {
+      $scope.isOpenSearch = false;
+    };
+    $scope.closeEsc = function(e) {
+      var isEscape = (e.keyCode === $mdConstant.KEY_CODE.ESCAPE);
+      console.log(isEscape);
+    };
 
     // optional properties
     $scope.isLoggedIn = Auth.isLoggedIn;

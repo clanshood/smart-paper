@@ -2,6 +2,9 @@ $baseline-menu: 48px;
 menus{
   position: relative;
 }
+.menus-backdrop{
+  position: fixed;
+}
 .menus-dropdown{
   list-style: none;
   position: absolute;

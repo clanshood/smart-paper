@@ -5,10 +5,19 @@ angular.module('smartPaperApp')
 
     // get default navbar
     $scope.navbar = $navbar.get();
+    $scope.isOpenSearch = false;
 
     // toggle sidenav
     $scope.toggleSidenav = function() {
       $mdSidenav('app-sidenav').toggle();
+    };
+
+    // app search actions
+    $scope.openSearch = function() {
+      $scope.isOpenSearch = true;
+    };
+    $scope.closeSearch = function() {
+      $scope.isOpenSearch = false;
     };
 
     // Use the User $resource to fetch all users

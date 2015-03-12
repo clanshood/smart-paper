@@ -1,0 +1,12 @@
+<md-autocomplete
+    ng-disabled="ctrl.isDisabled"
+    md-no-cache="true"
+    md-selected-item="ctrl.selectedItem"
+    md-search-text="ctrl.searchText"
+    md-items="item in ctrl.querySearch(ctrl.searchText)"
+    md-item-text="item.display"
+    md-selected-item-change="ctrl.displayResult(ctrl.selectedItem)"
+    placeholder="What is your favorite US state?"
+    ng-keydown="displayResult($event)">
+  <span md-highlight-text="ctrl.searchText">{{item.display}}</span>
+</md-autocomplete>

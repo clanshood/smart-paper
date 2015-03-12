@@ -7,11 +7,13 @@
     <span>{{ navbar.brand }}</span>
     <!-- fill up the space between left and right area -->
 
+    <search class="velocity-transition-fadeIn" ng-show="isOpenSearch"></search>
+
     <!-- pull to right -->
     <span flex></span>
 
     <!-- rendering navbar search -->
-    <md-button ng-if="navbar.isSearchBtn" ng-click="" aria-label="search"><md-icon md-font-icon="flaticon flaticon-md flaticon-search100" alt="search"></md-icon></md-button>
+    <md-button ng-if="navbar.isSearchBtn" ng-keydown="closeEsc($event)" ng-click="openSearch()" aria-label="search"><md-icon md-font-icon="flaticon flaticon-md flaticon-search100" alt="search"></md-icon></md-button>
 
     <!-- rendering navbar btn -->
     <md-button ng-repeat="btn in navbar.buttons" ng-if="(btn.needAuth === isLoggedIn())" ng-href="{{btn.link}}" ng-click="btnEvent(btn.action)">{{btn.label}}</md-button>
