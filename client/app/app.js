@@ -17,8 +17,8 @@ angular.module('smartPaperApp', [
     $stateProvider
       .state('landing', {
         url: '/',
-        templateUrl: 'app/admin/admin.html',
-        controller: 'AdminCtrl',
+        templateUrl: 'app/paper/paper.html',
+        controller: 'PaperCtrl',
         authenticate: true
       });
     $urlRouterProvider

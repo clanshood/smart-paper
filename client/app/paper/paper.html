@@ -1,0 +1,28 @@
+<navbar></navbar>
+
+<md-content layout="row" layout-fill flex>
+  <md-content layout="column" class="paper-table" flex>
+    <md-subheader class="md-primary">Hari ini</md-subheader>
+    <md-list class="paper-list">
+      <md-item ng-repeat="item in items">
+        <md-item-content>
+          <div class="md-tile-left">
+            <div class="paper-badge"><div class="badge-text md-primary">w</div></div>
+          </div>
+          <div class="md-tile-content">
+            <p>Lorem ipsum dolor sit amet.</p>
+          </div>
+          <div class="md-tile-right">
+            <md-button class="md-default" aria-label="info"><i class="flaticon flaticon-exit13"></i></md-button>
+          </div>
+        </md-item-content>
+      </md-item>
+      <md-divider></md-divider>
+    </md-list>
+  </md-content>
+  <md-sidenav md-component-id="paper-sidenav-right" class="md-sidenav-right" md-is-locked-open="$mdMedia('gt-md')">
+    <md-content class="md-padding">
+      <p>lorem ipsum</p>
+    </md-content>
+  </md-sidenav>
+</md-content>

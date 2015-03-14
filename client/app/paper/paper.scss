@@ -1,0 +1,28 @@
+.paper-table.md-default-theme{
+  // background-color: $base-highlight;
+}
+.paper-table{
+  overflow: auto;
+
+  .paper-list{
+    padding: 0 ($baseline-grid*2);
+  }
+
+  .paper-badge{
+    img{
+      width: 32px;
+      height: auto;
+      border-right: 32px;
+    }
+    .badge-text{
+      width: 24px;
+      line-height: 24px;
+      font-size: 16px;
+      overflow: hidden;
+      text-align: center;
+      border-radius: 2px;
+      background-color: $base-accent;
+      color: $base-light-solid;
+    }
+  }
+}
