@@ -13,11 +13,11 @@ angular.module('smartPaperApp')
 
         element.addClass('app-search');
         element.attr('tabIndex', '-1');
-        element[0].focus();
+        element.focus();
         angular.element(backdrop);
         // add backdrop to document body
-        // angular.element(body).append(backdrop);
-        element.prepend(backdrop);
+        angular.element(body).append(backdrop);
+        // element.prepend(backdrop);
 
         element[scope.isOpenSearch ? 'on' : 'off']( 'keydown', onKeyDown );
 
