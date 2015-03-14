@@ -3,7 +3,6 @@
 angular.module('smartPaperApp')
   .controller('SearchCtrl', function ($scope, $q, $timeout, $location, $mdConstant) {
 
-    
     var self = this;
     // list of `state` value/display objects
     self.states        = loadAll();
@@ -17,10 +16,10 @@ angular.module('smartPaperApp')
       // redirect to search/keyword
       // $location.path('search/' + selectedItem);
       // only fire on enter
-      if (e.keyCode === 13) {
-        console.log($mdConstant.KEY_CODE.ENTER);
-        console.log(searchText);
-      };
+      // if (e.keyCode === 13) {
+      //   console.log($mdConstant.KEY_CODE.ENTER);
+      // };
+      console.log(searchText);
     }
 
     // ******************************
