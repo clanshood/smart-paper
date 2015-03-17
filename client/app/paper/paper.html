@@ -1,28 +1,56 @@
-<navbar></navbar>
+<!-- .paper-app -->
+<md-content layout="row" class="paper-app" layout-fill>
+  <!-- .paper-table -->
+  <md-content layout="column" flex>
+    <!-- define app navbar -->
+    <navbar></navbar>
+    <!-- /.navbar -->
 
-<md-content layout="row" layout-fill flex>
-  <md-content layout="column" class="paper-table" flex>
-    <md-subheader class="md-primary">Hari ini</md-subheader>
-    <md-list class="paper-list">
-      <md-item ng-repeat="item in items">
-        <md-item-content>
-          <div class="md-tile-left">
-            <div class="paper-badge"><div class="badge-text md-primary">w</div></div>
-          </div>
-          <div class="md-tile-content">
-            <p>Lorem ipsum dolor sit amet.</p>
-          </div>
-          <div class="md-tile-right">
-            <md-button class="md-default" aria-label="info"><i class="flaticon flaticon-exit13"></i></md-button>
-          </div>
-        </md-item-content>
-      </md-item>
-      <md-divider></md-divider>
-    </md-list>
-  </md-content>
-  <md-sidenav md-component-id="paper-sidenav-right" class="md-sidenav-right" md-is-locked-open="$mdMedia('gt-md')">
+    <!-- .paper-content -->
+    <md-content layout="row" layout-fill>
+      <!-- wrapper to place md-subheader -->
+      <md-content layout="column" class="paper-table" flex="100" flex-gt-md="70">
+        <md-content layout="column">
+          <md-subheader class="md-default">Hari ini</md-subheader>
+          <md-list class="paper-list">
+            <md-item class="paper-item" ng-repeat="item in items">
+              <md-item-content class="paper-item-content">
+                <div class="md-tile-left">
+                  <div class="paper-tile"><div class="tile-text md-primary">w</div></div>
+                </div>
+                <div class="md-tile-content" md-ink-ripple="#aaa" md-ripple-size="full">
+                  <h4>Lorem ipsum dolor sit amet.</h4>
+                </div>
+                <div class="md-tile-right">
+                  <md-button aria-label="info" ng-click="getPaperInfo()" hide-gt-md><i class="flaticon flaticon-rounded59"></i></md-button>
+                </div>
+              </md-item-content>
+              <md-divider></md-divider>
+            </md-item>
+          </md-list>
+        </md-content>
+      </md-content><!-- /.paper-table -->
+
+      <md-content class="paper-info" layout="column" flex-gt-md="30" hide-sm hide-md>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut illo eius ratione commodi numquam, natus enim sunt! Totam numquam, quam eos placeat atque ratione cupiditate eligendi cum animi quibusdam dolores.</p>
+      </md-content>
+    </md-content><!-- .paper-content -->
+  </md-content><!-- /wrapper -->
+
+
+  <!-- .paper-info:display on medium device -->
+  <md-sidenav md-component-id="paper-info-sidenav" class="paper-info-sidenav md-sidenav-right" layout="column" hide-gt-md layout-fill>
+    <md-toolbar class="md-tall">
+      <h2 class="md-toolbar-tools">
+        <md-button hide-gt-md class="first" ng-click="closePaperInfo()" aria-label="close info">
+          <i class="flaticon flaticon-md flaticon-go10"></i>
+        </md-button>
+      </h2>
+      <p class="md-toolbar-tools md-toolbar-tools-bottom">Lorem ipsum dolor sit amet</p>
+    </md-toolbar>
     <md-content class="md-padding">
       <p>lorem ipsum</p>
     </md-content>
-  </md-sidenav>
-</md-content>
+  </md-sidenav><!-- /.paper-info -->
+
+</md-content><!-- /.paper-app

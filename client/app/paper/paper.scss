@@ -1,20 +1,26 @@
-.paper-table.md-default-theme{
-  // background-color: $base-highlight;
+.paper-app{
+  overflow: hidden;
 }
 .paper-table{
-  overflow: auto;
+  overflow-y: auto;
 
   .paper-list{
-    padding: 0 ($baseline-grid*2);
+    md-item-content {
+      padding: 0 ($baseline-grid*2);
+      cursor: pointer;
+      .flaticon{
+        color: $base-darkgrey;
+      }
+    }
   }
 
-  .paper-badge{
+  .paper-tile{
     img{
       width: 32px;
       height: auto;
       border-right: 32px;
     }
-    .badge-text{
+    .tile-text{
       width: 24px;
       line-height: 24px;
       font-size: 16px;
@@ -23,6 +29,35 @@
       border-radius: 2px;
       background-color: $base-accent;
       color: $base-light-solid;
+    }
+  }
+}
+
+.paper-info-sidenav{
+
+  @media (max-width: $layout-breakpoint-sm){
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  md-toolbar.md-default-theme{
+    background-color: #fafafa;
+    color: $base-darkgrey;
+
+    .md-button{
+      color: inherit;
+    }
+  }
+
+  .md-toolbar-tools{
+
+    > .first{
+      margin-left: -($baseline-grid*1);
+      margin-right: $baseline-grid;
+    }
+    > .last{
+      margin-right: -($baseline-grid*1);
     }
   }
 }
