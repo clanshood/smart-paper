@@ -4,6 +4,9 @@ angular.module('smartPaperApp')
   .directive('navbar', function () {
     return {
       templateUrl: 'components/navbar/navbar.html',
-      restrict: 'EA'
+      restrict: 'EA',
+      link: function(scope, element){
+        element.addClass('navbar');
+      }
     };
   });
