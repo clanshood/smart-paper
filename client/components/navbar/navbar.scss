@@ -1,3 +1,7 @@
+.navbar{
+  min-height: $app-bar-height;
+  z-index: 3;
+}
 .app-bar{
   .md-toolbar-tools > *{
     margin-right: $baseline-grid;
