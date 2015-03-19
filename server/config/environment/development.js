@@ -8,5 +8,5 @@ module.exports = {
     uri: 'mongodb://localhost/smartpaper-dev'
   },
 
-  seedDB: false
+  seedDB: true
 };
