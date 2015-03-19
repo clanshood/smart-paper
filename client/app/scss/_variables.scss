@@ -3,18 +3,21 @@ $font-family: RobotoDraft, Roboto, 'Helvetica Neue', sans-serif !default;
 
 // Colors Map
 // ------------------------------
-$base-dark-solid: rgba(#000,1);
-$base-dark: rgba(#000,0.87);
-$base-darkgrey: rgba(#000,0.54);
-$base-light-solid: rgba(#fff,1);
-$base-light: rgba(#fff,0.54);
-$base-lightgrey: rgba(#fff,0.87);
+$base-dark-solid: rgba(0, 0, 0, 1);
+$base-dark: rgba(0, 0, 0, .87);
+$base-darkgrey: rgba(0, 0, 0, .54);
+$base-light-solid: rgba(255, 255, 255, 1);
+$base-light: rgba(255, 255, 255, .54);
+$base-lightgrey: rgba(255, 255, 255, .87);
 
 // variants
 $base-highlight: #e8e8e8;
 $base-primary: #8E24AA;
 $base-accent: #009688;
-$base-warning: #E53935;
+$base-warn: #E53935;
+
+// border
+$base-border: rgba(0, 0, 0, .12) !default;
 
 
 // Layout
