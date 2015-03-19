@@ -49,3 +49,40 @@
 .affix {
   position: fixed;
 }
+
+// For Background Helper
+// -------------------------
+.bg-primary{
+  background: $base-primary;
+  color: $base-light;
+}
+.bg-accent{
+  background: $base-accent;
+  color: $base-light;
+}
+.bg-warn{
+  background: $base-warn;
+  color: $base-light;
+}
+
+// For Color Helper
+// -------------------------
+.color-primary{
+  color: $base-primary;
+}
+.color-accent{
+  color: $base-accent;
+}
+.color-warn{
+  color: $base-warn;
+}
+.color-secondary{
+  color: $base-darkgrey;
+}
+.bg-primary,
+.bg-accent,
+.bg-warn{
+  .color-secondary{
+    color: $base-darkgrey;
+  }
+}
