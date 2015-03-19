@@ -3,6 +3,7 @@
 }
 .paper-table{
   overflow-y: auto;
+  z-index: 1;
 
   .paper-list{
     md-item-content {
@@ -31,6 +32,11 @@
       color: $base-light-solid;
     }
   }
+}
+
+.paper-info{
+  width: 320px;
+  z-index: 0;
 }
 
 .paper-info-sidenav{

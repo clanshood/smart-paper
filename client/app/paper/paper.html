@@ -1,5 +1,5 @@
 <!-- .paper-app -->
-<md-content layout="row" class="paper-app" layout-fill>
+<md-content layout="row" class="paper-app" layout-fill flex>
   <!-- .paper-table -->
   <md-content layout="column" flex>
     <!-- define app navbar -->
@@ -7,19 +7,28 @@
     <!-- /.navbar -->
 
     <!-- .paper-content -->
-    <md-content layout="row" layout-fill>
+    <md-content layout="row" flex>
       <!-- wrapper to place md-subheader -->
-      <md-content layout="column" class="paper-table" flex="100" flex-gt-md="70">
+      <md-content layout="column" class="paper-table md-whiteframe-z1" flex>
         <md-content layout="column">
           <md-subheader class="md-default">Hari ini</md-subheader>
           <md-list class="paper-list">
-            <md-item class="paper-item" ng-repeat="item in items">
+            <md-item class="paper-item" ng-repeat="paper in papers">
               <md-item-content class="paper-item-content">
                 <div class="md-tile-left">
                   <div class="paper-tile"><div class="tile-text md-primary">w</div></div>
                 </div>
-                <div class="md-tile-content" md-ink-ripple="#aaa" md-ripple-size="full">
-                  <h4>Lorem ipsum dolor sit amet.</h4>
+                <div class="md-tile-content" md-ink-ripple="#aaa" md-ripple-size="full" layout-wrap>
+                  <md-content layout="row">
+                    <div flex="55">{{ paper.title }} <br>
+                      <span ng-repeat="collaborator in paper.collaborator[0].arr">
+                        <span>{{ collaborator.author.name }}</span>
+                      </span>
+                    </div>
+                    <div flex="15"><small>{{ paper.author.name }}</small></div>
+                    <div flex="15"><small>{{ paper.updated | date}}</small></div>
+                    <div flex="15"><small>{{ paper.questions.length }}</small></div>
+                  </md-content>
                 </div>
                 <div class="md-tile-right">
                   <md-button aria-label="info" ng-click="getPaperInfo()" hide-gt-md><i class="flaticon flaticon-rounded59"></i></md-button>
@@ -31,8 +40,8 @@
         </md-content>
       </md-content><!-- /.paper-table -->
 
-      <md-content class="paper-info" layout="column" flex-gt-md="30" hide-sm hide-md>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut illo eius ratione commodi numquam, natus enim sunt! Totam numquam, quam eos placeat atque ratione cupiditate eligendi cum animi quibusdam dolores.</p>
+      <md-content class="paper-info" layout="column" hide-sm hide-md>
+        <pre>{{ papers | json:2 }}</pre>
       </md-content>
     </md-content><!-- .paper-content -->
   </md-content><!-- /wrapper -->
@@ -49,7 +58,7 @@
       <p class="md-toolbar-tools md-toolbar-tools-bottom">Lorem ipsum dolor sit amet</p>
     </md-toolbar>
     <md-content class="md-padding">
-      <p>lorem ipsum</p>
+      <pre>{{ papers | json:2 }}</pre>
     </md-content>
   </md-sidenav><!-- /.paper-info -->
 
