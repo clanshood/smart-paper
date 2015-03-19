@@ -7,7 +7,7 @@
     <span>{{ navbar.brand }}</span>
     <!-- fill up the space between left and right area -->
 
-    <search class="velocity-transition-fadeIn" ng-show="isOpenSearch"></search>
+    <search ng-class="{'velocity-transition-fadeIn': isOpenSearch}" ng-show="isOpenSearch"></search>
 
     <!-- pull to right -->
     <span flex></span>

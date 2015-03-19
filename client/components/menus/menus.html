@@ -1,4 +1,4 @@
-<ul class="menus-dropdown velocity-transition-expandIn" ng-show="isOpen">
+<ul class="menus-dropdown" ng-class="{'velocity-transition-expandIn': isOpen}" ng-show="isOpen">
     <li ng-repeat="item in items" md-ink-ripple="#aaa" md-ripple-size="full" class="menus-item" ng-class="{active: isActive(item.route)}">
         <a ng-href="{{item.route}}">{{item.label}}</a>
     </li>
