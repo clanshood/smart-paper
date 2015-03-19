@@ -8,7 +8,9 @@ exports.index = function(req, res) {
   Paper.find(function (err, papers) {
     if(err) { return handleError(res, err); }
     return res.json(200, papers);
-  });
+  })
+  .populate("author", "name")
+  .populate("collaborators.person.author", "name");
 };
 
 // Get a single paper
