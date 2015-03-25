@@ -8,11 +8,11 @@
   }
   .md-toolbar-tools{
     > .first{
-      margin-left: -($baseline-grid*1);
-      margin-right: $baseline-grid;
+      // margin-left: -($baseline-grid*1);
+      margin-right: ($baseline-grid*2.5);
     }
     > .last{
-      margin-right: -($baseline-grid*1);
+      // margin-right: -($baseline-grid*1);
     }
   }
 }
