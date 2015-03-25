@@ -17,7 +17,8 @@
     "angular-material": "master",
     "lodash": "~2.4.1",
     "velocity": "~1.2.1",
-    "velocity-ui-angular": "~0.3.5"
+    "velocity-ui-angular": "~0.3.5",
+    "angular-relative": "*"
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",
