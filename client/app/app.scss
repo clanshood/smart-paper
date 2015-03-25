@@ -26,6 +26,7 @@
 // injector
 @import 'account/login/login.scss';
 @import 'admin/admin.scss';
+@import 'paper/paper-item/paper-item.scss';
 @import 'paper/paper.scss';
 @import 'menus/menus.scss';
 @import 'modal/modal.scss';
@@ -89,7 +90,41 @@ md-input-container{
 // fix md-sub-header
 .md-subheader{
   margin-right: 0;
+  font-weight: 500;
+
   &:not(.md-sticky-no-effect):after{
     right: 0;
   }
+}
+
+
+// md-divider issue
+md-divider[md-inset]{
+  margin-left: 76px;
+}
+
+
+// label & badge
+.label,
+.badge{
+  display: inline-block;
+  min-width: 10px;
+  margin: 0 ($baseline-grid/2);
+  padding: ($baseline-grid/2) $baseline-grid;
+  font-size: 12px;
+  font-weight: 500;
+  color: $base-darkgrey;
+  line-height: 13px;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-align: center;
+  background-color: $base-border;
+  border-radius: 2px;
+
+  &:first-child{
+    margin-left: 0;
+  }
+}
+.badge{
+  border-radius: 24px;
 }

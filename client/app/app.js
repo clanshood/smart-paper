@@ -11,9 +11,10 @@ angular.module('smartPaperApp', [
   'ui.router',
   'ngTouch',
   'velocity.ui',
-  'ngMaterial'
+  'ngMaterial',
+  'relativeDate'
 ])
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $mdThemingProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $mdThemingProvider, relativeDateProvider) {
     $stateProvider
       .state('landing', {
         url: '/',
@@ -43,6 +44,20 @@ angular.module('smartPaperApp', [
         'hue-2': 'A700',
         'hue-3': 'A100',
       });
+
+    relativeDateProvider.cutoffDayCount(15);
+    relativeDateProvider.defaultFallbackFormat("MMM d, yyyy");
+    relativeDateProvider.translations({
+      JUST_NOW: "baru saja",
+      ABOUT_1_MINUTE_AGO: "1 menit lalu",
+      MINUTES_AGO: "menit lalu",
+      ABOUT_1_HOUR_AGO: "sekitar 1 jam",
+      HOURS_AGO: "jam lalu",
+      YESTERDAY: "kemarin",
+      DAYS_AGO: "hari lalu",
+      A_WEEK_AGO: "seminggu lalu",
+      WEEKS_AGO: "minggu lalu"
+    });
 
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
