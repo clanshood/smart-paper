@@ -65,6 +65,18 @@
   color: $base-light;
 }
 
+
+// For Text Helper
+// -------------------------
+.text-secondary{
+  // font-size: 14px;
+  color: $base-darkgrey;
+  font-weight: 500;
+}
+.text-ellipsis{
+  @include text-overflow();
+}
+
 // For Color Helper
 // -------------------------
 .color-primary{
@@ -82,7 +94,8 @@
 .bg-primary,
 .bg-accent,
 .bg-warn{
+  .text-secondary,
   .color-secondary{
-    color: $base-darkgrey;
+    color: $base-lightgrey;
   }
 }
