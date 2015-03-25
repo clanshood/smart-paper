@@ -5,7 +5,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  padding: 12px $baseline-grid 12px ($baseline-grid * 2);
+  padding: 12px ($baseline-grid * 2);
   z-index: $whiteframe-zindex-z3;
   background-color: $base-highlight;
 }
