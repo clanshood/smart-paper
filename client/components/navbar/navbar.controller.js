@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('smartPaperApp')
-  .controller('NavbarCtrl', function ($scope, $location, Auth, $mdSidenav, $navbar) {
+  .controller('NavbarCtrl', function ($scope, $location, Auth, $mdSidenav, $navbar, $mdConstant) {
 
     // required properties
     $scope.navbar = $navbar.get();
@@ -28,27 +28,6 @@ angular.module('smartPaperApp')
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
-    $scope.navbar.buttons = [{
-      label: "Signup",
-      needAuth: true,
-      link: "/signup",
-      action: ""
-    },{
-      label: "Login",
-      needAuth: false,
-      link: "/login",
-      action: ""
-    },{
-      label: "Settings",
-      needAuth: true,
-      link: "/settings",
-      action: ""
-    },{
-      label: "Logout",
-      needAuth: true,
-      link: "/logout",
-      action: "logout"
-    }];
 
     $scope.btnEvent = function(action){
       if (action || action !== '') {

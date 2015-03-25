@@ -19,8 +19,6 @@ angular.module('smartPaperApp')
         angular.element(body).append(backdrop);
         // element.prepend(backdrop);
 
-        element[scope.isOpenSearch ? 'on' : 'off']( 'keydown', onKeyDown );
-
        /**
          * Auto-close sideNav when the `escape` key is pressed.
          * @param evt
@@ -29,7 +27,9 @@ angular.module('smartPaperApp')
           var isEscape = (e.keyCode === $mdConstant.KEY_CODE.ESCAPE);
           console.log(e.keyCode);
           scope.isOpenSearch = (isEscape) ? true : false;
-        };
+        }
+
+        element[scope.isOpenSearch ? 'on' : 'off']( 'keydown', onKeyDown );
       }
     };
   });

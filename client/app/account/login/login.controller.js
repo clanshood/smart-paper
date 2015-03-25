@@ -9,7 +9,7 @@ angular.module('smartPaperApp')
     if ( Auth.isLoggedIn() ) {
       // Logged in, redirect to home
       $location.path('/');
-    };
+    }
 
     $scope.login = function(form) {
       $scope.submitted = true;

@@ -7,7 +7,7 @@ angular.module('smartPaperApp')
     $scope.navbar = $navbar.set({
       isSidenavControll: false,
       isSearchBtn: false,
-      brand: "Login",
+      brand: 'Login',
       menu: {
         display: false
       },

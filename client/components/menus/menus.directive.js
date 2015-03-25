@@ -24,16 +24,8 @@ angular.module('smartPaperApp')
         element.children('.menus-dropdown').css(align, 0);
 
         // add btn to access menu with 'click'
-        var btn = $compile('<md-button aria-label="'+ aria +'">'+ icon + label +'</md-button>')(scope),
-            items = element.find('.menus-item');
+        var btn = $compile('<md-button aria-label="'+ aria +'">'+ icon + label +'</md-button>')(scope);
 
-
-        // add action to btn element
-        angular.element(btn)[!scope.isOpen ? 'on' : 'off']( 'click', toggleOpen );
-        // add action to backdrop element
-        angular.element(backdrop)[!scope.isOpen ? 'on' : 'off']( 'click', toggleOpen );
-        // ad shortcut action to element
-        element[!scope.isOpen ? 'on' : 'off']( 'keydown', onKeyDown );
 
         /**
          * Auto-close sideNav when the `escape` key is pressed.
@@ -42,7 +34,7 @@ angular.module('smartPaperApp')
         function onKeyDown(e) {
           var isEscape = (e.keyCode === $mdConstant.KEY_CODE.ESCAPE && scope.isOpen);
           return isEscape ? toggleOpen(e) : false;
-        };
+        }
 
         /**
          * With backdrop `clicks` or `escape` key-press, immediately
@@ -61,6 +53,13 @@ angular.module('smartPaperApp')
             new Velocity(item, 'transition.slideDownIn', { stagger: 100, duration: 300 });
           }
         }
+
+        // add action to btn element
+        angular.element(btn)[!scope.isOpen ? 'on' : 'off']( 'click', toggleOpen );
+        // add action to backdrop element
+        angular.element(backdrop)[!scope.isOpen ? 'on' : 'off']( 'click', toggleOpen );
+        // ad shortcut action to element
+        element[!scope.isOpen ? 'on' : 'off']( 'keydown', onKeyDown );
 
         // add btn to menus template, always place it on first child
         element.prepend(btn);

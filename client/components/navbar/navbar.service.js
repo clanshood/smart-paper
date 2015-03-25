@@ -8,9 +8,9 @@ angular.module('smartPaperApp')
       scrollShrinkSpeed: 0.5,
       isSidenavControll: true,
       isSearchBtn: true,
-      brand: "Smart Paper",
-      size: "",
-      theme: "default",
+      brand: 'Smart Paper',
+      size: '',
+      theme: 'default',
       menu: {
         display: true,
         lists:[{
@@ -27,10 +27,10 @@ angular.module('smartPaperApp')
       buttons: [
         /* sample obj
         {
-          label: "Signup",
+          label: 'Signup',
           needAuth: false,
-          link: "/signup",
-          action: ""
+          link: '/signup',
+          action: ''
         }
         */
       ],
