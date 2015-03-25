@@ -4,34 +4,6 @@
 .paper-table{
   overflow-y: auto;
   z-index: 1;
-
-  .paper-list{
-    md-item-content {
-      padding: 0 ($baseline-grid*2);
-      cursor: pointer;
-      .flaticon{
-        color: $base-darkgrey;
-      }
-    }
-  }
-
-  .paper-tile{
-    img{
-      width: 32px;
-      height: auto;
-      border-right: 32px;
-    }
-    .tile-text{
-      width: 24px;
-      line-height: 24px;
-      font-size: 16px;
-      overflow: hidden;
-      text-align: center;
-      border-radius: 2px;
-      background-color: $base-accent;
-      color: $base-light-solid;
-    }
-  }
 }
 
 .paper-info{

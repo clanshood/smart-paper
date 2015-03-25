@@ -1,5 +1,5 @@
 <!-- .paper-app -->
-<md-content layout="row" class="paper-app" layout-fill flex>
+<md-content ng-if="isLoggedIn() && isAdmin()" layout="row" class="paper-app" layout-fill flex>
   <!-- .paper-table -->
   <md-content layout="column" flex>
     <!-- define app navbar -->
@@ -10,37 +10,35 @@
     <md-content layout="row" flex>
       <!-- wrapper to place md-subheader -->
       <md-content layout="column" class="paper-table md-whiteframe-z1" flex>
+        <!-- paper-content -->
         <md-content layout="column">
-          <md-subheader class="md-default">Hari ini</md-subheader>
-          <md-list class="paper-list">
-            <md-item class="paper-item" ng-repeat="paper in papers">
-              <md-item-content class="paper-item-content">
-                <div class="md-tile-left">
-                  <div class="paper-tile"><div class="tile-text md-primary">w</div></div>
-                </div>
-                <div class="md-tile-content" md-ink-ripple="#aaa" md-ripple-size="full" layout-wrap>
-                  <md-content layout="row">
-                    <div flex="55">{{ paper.title }} <br>
-                      <span ng-repeat="collaborator in paper.collaborator[0].arr">
-                        <span>{{ collaborator.author.name }}</span>
-                      </span>
-                    </div>
-                    <div flex="15"><small>{{ paper.author.name }}</small></div>
-                    <div flex="15"><small>{{ paper.updated | date}}</small></div>
-                    <div flex="15"><small>{{ paper.questions.length }}</small></div>
-                  </md-content>
-                </div>
-                <div class="md-tile-right">
-                  <md-button aria-label="info" ng-click="getPaperInfo()" hide-gt-md><i class="flaticon flaticon-rounded59"></i></md-button>
-                </div>
-              </md-item-content>
-              <md-divider></md-divider>
-            </md-item>
-          </md-list>
-        </md-content>
+          <!-- paper-list -->
+          <div class="paper-list">
+            <!-- item-header -->
+            <div class="paper-header" layout="row" hide-sm hide-md hide-lg>
+              <md-content layout="row" class="md-padding" layout-wrap flex>
+                <div flex="55" flex-md="70">Judul Paper</div>
+                <div flex>Lencana</div>
+                <div flex="10">Penulis</div>
+                <div flex="10">Terupdate</div>
+              </md-content>
+            </div><!-- /item-header -->
+
+            <!-- item-subheader -->
+            <!-- <md-subheader class="md-default">Hari ini</md-subheader> -->
+
+            <!-- items -->
+            <paper-item ng-repeat="paper in papers" class="velocity-transition-fadeIn"></paper-item>
+          </div><!-- /paper-list -->
+        </md-content><!-- /paper-content -->
+
+        <!-- floating-actions -->
+        <md-button class="md-fab md-accent md-fab-bottom-right" aria-label="buat paper baru">
+          <md-icon md-font-icon="flaticon flaticon-md flaticon-add186"></md-icon>
+        </md-button><!-- /floating-actions -->
       </md-content><!-- /.paper-table -->
 
-      <md-content class="paper-info" layout="column" hide-sm hide-md>
+      <md-content class="paper-info" layout="column" hide-sm hide-md hide-lg>
         <pre>{{ papers | json:2 }}</pre>
       </md-content>
     </md-content><!-- .paper-content -->
@@ -48,7 +46,7 @@
 
 
   <!-- .paper-info:display on medium device -->
-  <md-sidenav md-component-id="paper-info-sidenav" class="paper-info-sidenav md-sidenav-right" layout="column" hide-gt-md layout-fill>
+  <md-sidenav md-component-id="paper-info-sidenav" class="paper-info-sidenav md-sidenav-right" layout="column" hide-gt-lg layout-fill>
     <md-toolbar class="md-tall">
       <h2 class="md-toolbar-tools">
         <md-button hide-gt-md class="first" ng-click="closePaperInfo()" aria-label="close info">
