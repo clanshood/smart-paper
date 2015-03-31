@@ -1,22 +1,11 @@
 'use strict';
 
 angular.module('smartPaperApp')
-  .controller('PaperCtrl', function ($scope, $q, $http, Auth, User, $navbar, $mdSidenav, $mdMedia, $mdDialog, $mdToast, socket, relativeDate) {
+  .controller('PaperCtrl', function ($scope, $q, $http, Auth, User, Paper, $navbar, $mdSidenav, $mdMedia, $mdDialog, $mdToast, socket, relativeDate) {
     // navbar control
     // get default navbar
-    $scope.navbar = $navbar.get();
-    $scope.isOpenSearch = false;
-
-    // navbar buttons
-    // required this fn if btn is defined
-    $scope.btnEvent = function(action){
-      if (action || action !== '') {
-        $scope.$eval(action)($scope);
-      };
-    };
-    // button lists
-    $scope.navbar.buttons = [
-      {
+    $scope.navbar = $navbar.set({
+      buttons: [{
         label: '<i class="flaticon flaticon-md flaticon-create3"></i>',
         tooltip: 'Ubah',
         needAuth: Auth.isLoggedIn() && Auth.isAdmin(),
@@ -38,8 +27,25 @@ angular.module('smartPaperApp')
           ngShow: 'checkedPaper.length',
           ngHide: '!checkedPaper.length' // set default hide
         }
-      }
-    ];
+      }]
+    });
+
+    $scope.isOpenSearch = false;
+
+    // empty content handle
+    $scope.empty = {
+      icon: 'flaticon flaticon-cloud304',
+      label: 'Anda Tidak Memiliki Satupun Paper',
+      description: 'Paper yang anda buat akan berada disini dan anda belum punya saat ini.'
+    };
+
+    // navbar buttons
+    // required this fn if btn is defined
+    $scope.btnEvent = function(action){
+      if (action || action !== '') {
+        $scope.$eval(action)($scope);
+      };
+    };
 
     // app search actions
     $scope.openSearch = function() {
@@ -75,93 +81,122 @@ angular.module('smartPaperApp')
       return dt;
     };
 
-    $scope.selectedPaper = '';
+    // paper items actions
+    $scope.selectedPaper = null;
     $scope.checkedPaper = [];
 
-    // Grab the initial set of available papers
-    $http.get('/api/papers').success(function(papers) {
-      $scope.papers = papers;
-
-      // Update array with any new or deleted Papers pushed from the socket
-      socket.syncUpdates('paper', $scope.papers, function(event, paper, papers) {
-        // This callback is fired after the papers array is updated by the socket listeners
-
-        // sort the array every time its modified
-        papers.sort(function(a, b) {
-          a = new Date(a.date);
-          b = new Date(b.date);
-          return a>b ? -1 : a<b ? 1 : 0;
-        });
-      });
-    }).then(function(papers){
-      $scope.selectedPaper = papers.data[0]._id;
-    });
-
-
-    $scope.setSelectedPaper = function(pid){
-      $scope.selectedPaper = pid;
+    /**
+     * set paper that selected by user
+     *
+     * @param {Object} paper
+     */
+    $scope.setSelectedPaper = function(paper){
+      $scope.selectedPaper = paper;
     };
 
+    /**
+     * check if paper was selected or not then toggle it
+     *
+     * @param  {String}  pid
+     * @return {Boolean}
+     */
     $scope.isSelected = function(pid){
-      return ($scope.selectedPaper === pid);
+      return ($scope.selectedPaper._id === pid);
     };
 
     $scope.isChecked = function(pid){
-      return ($scope.checkedPaper.indexOf(pid) > -1);
+      var ids = [];
+      angular.forEach( $scope.checkedPaper, function(val){
+        ids.push(val._id);
+      });
+      return (ids.indexOf(pid) > -1);
     };
 
-    $scope.checker = function(pid){
-      var index = $scope.checkedPaper.indexOf(pid);
-      ( $scope.isChecked(pid) ) ? $scope.checkedPaper.splice(index, 1): $scope.checkedPaper.push(pid);
+    $scope.checker = function(paper){
+
+      var index = $scope.checkedPaper.indexOf(paper);
+      ( $scope.isChecked(paper._id) ) ? $scope.checkedPaper.splice(index, 1): $scope.checkedPaper.push(paper);
     };
 
-    $scope.getPaperInfo = function(pid){
-      $scope.setSelectedPaper(pid);
+
+    $scope.getPaperInfo = function(paper){
+      $scope.setSelectedPaper(paper);
 
       if (!$mdMedia('gt-lg')) {
         $scope.openPaperInfo();
       };
-      console.log($scope.selectedPaper);
+      // console.log($scope.selectedPaper);
 
       // grab paper/:id && questions/:pid
     };
 
+    // Grab the initial set of available papers
+    Paper.selectAll($scope, function(papers){
+      if (papers.length)
+        $scope.setSelectedPaper(papers[0]);
+    });
 
-    // remove paper from database by seleted from user
-    $scope.removePaper = function(scope){
-      if ( !angular.isArray(scope.checkedPaper) || !scope.checkedPaper.length ) {
+    // remove (mean move paper to trash until user cleaning the trash) paper from database by seleted from user
+    $scope.removePaper = function($scope){
+      if ( !angular.isArray($scope.checkedPaper) || !$scope.checkedPaper.length ) {
         return;
       }
 
       // create confirm for user interaction
       var confirm = $mdDialog.confirm()
-        .title('Anda yakin akan menghapus paper ini?')
-        .content(scope.checkedPaper.length + ' paper akan dihapus jika anda meneruskan proses ini.')
+        .title('Anda yakin akan menghapus paper?')
+        .content($scope.checkedPaper.length + ' paper akan dihapus jika anda meneruskan proses ini.')
         .ariaLabel('konfirmasi penghapusan paper')
         .ok('Hapus')
         .cancel('Batalkan')
 
       $mdDialog.show(confirm).then(function() {
+        var beCancel = $scope.checkedPaper;
         // true
         $q.all([
-          angular.forEach(scope.checkedPaper, function(pid){
-            $http.delete('/api/papers/' + pid );
+          angular.forEach($scope.checkedPaper, function(paper){
+            Paper.moveTo( paper, 'trash', function(data){
+              if( angular.equals(paper, $scope.selectedPaper) && $scope.papers.length )
+                $scope.setSelectedPaper($scope.papers[0]);
+            });
           })
         ])
         .then(function(){
+
+          // show alert
           var pos = ($mdMedia('gt-lg')) ? 'bottom left' : 'bottom right left' ;
           var toast = $mdToast.simple()
-              .content( scope.checkedPaper.length + ' paper berhasil dihapus' )
-              .action('Tutup')
+              .content( $scope.checkedPaper.length + ' paper berhasil dihapus' )
+              .action('Kembalikan')
               .highlightAction(false)
-              .position( pos );
-          $mdToast.show(toast);
-          // reset Paper checked
+              .position( pos )
+              .hideDelay(6000);
+          $mdToast.show(toast).then(function(){
+            angular.forEach(beCancel, function(paper){
+              Paper.moveTo( paper, 'active', function(){
+                if( angular.equals(paper, $scope.selectedPaper) && $scope.papers.length )
+                  $scope.setSelectedPaper($scope.papers[0]);
+              });
+            });
+          }); // end $mdToast
+
           $scope.checkedPaper = [];
         });
       }, function() {
         // false => close
         console.log('membatalkan keinginan penghapusan paper.');
-      });
+      }); // end $mdDialog
     };
+
+    // update papers on data change
+    // socket.socket.on('paper:remove', function (doc) {
+    //   //
+    //   console.log(doc);
+    // });
+    // $scope.$on('paper:moveto', function (data) {
+    //   socket.unsyncUpdates('paper');
+    // });
+    $scope.$on('$destroy', function () {
+      socket.unsyncUpdates('paper');
+    });
   });

@@ -11,16 +11,17 @@
       <!-- wrapper to place md-subheader -->
       <md-content layout="column" class="paper-table md-whiteframe-z1" flex>
         <!-- paper-content -->
-        <md-content layout="column">
+        <md-content layout="column" flex>
+
           <!-- paper-list -->
-          <div class="paper-list">
+          <div class="paper-list" ng-if="papers.length">
             <!-- item-header -->
             <div class="paper-header" layout="row" hide-sm hide-md hide-lg>
               <md-content layout="row" class="md-padding" layout-wrap flex>
                 <div flex="55" flex-md="70">Judul Paper</div>
                 <div flex>Lencana</div>
-                <div flex="10">Penulis</div>
-                <div flex="10">Terupdate</div>
+                <div flex="10">Pemilik</div>
+                <div flex="10">Diubah</div>
               </md-content>
             </div><!-- /item-header -->
 
@@ -28,8 +29,17 @@
             <!-- <md-subheader class="md-default">Hari ini</md-subheader> -->
 
             <!-- items -->
-            <paper-item ng-repeat="paper in papers" class="velocity-transition-fadeIn"></paper-item>
+            <paper-item ng-repeat="paper in papers"></paper-item><!--  | orderBy:'updated' -->
+
+            <pre>{{papers | json:2}}</pre>
           </div><!-- /paper-list -->
+
+          <!-- if:empty content -->
+          <div class="empty-paper-content ng-cloak" ng-if="!papers.length" ng-class="velocity-transition-fadeIn" layout="column" layout-align="center center" flex>
+            <div class="text-secondary" style="font-size:128px"><i class="{{ empty.icon }}"></i></div>
+            <h3>{{ empty.label }}</h3>
+            <div class="text-secondary">{{ empty.description }}</div>
+          </div><!-- /empty content -->
         </md-content><!-- /paper-content -->
 
         <!-- floating-actions -->
@@ -38,8 +48,8 @@
         </md-button><!-- /floating-actions -->
       </md-content><!-- /.paper-table -->
 
-      <md-content class="paper-info" layout="column" hide-sm hide-md hide-lg>
-        <pre>{{ papers | json:2 }}</pre>
+      <md-content class="paper-info md-padding" layout="column" ng-show="papers.length" ng-class="velocity-transition-slideLeftIn" hide-sm hide-md hide-lg>
+        <paper-info></paper-info>
       </md-content>
     </md-content><!-- .paper-content -->
   </md-content><!-- /wrapper -->
@@ -47,16 +57,8 @@
 
   <!-- .paper-info:display on medium device -->
   <md-sidenav md-component-id="paper-info-sidenav" class="paper-info-sidenav md-sidenav-right" layout="column" hide-gt-lg layout-fill>
-    <md-toolbar class="md-tall">
-      <h2 class="md-toolbar-tools">
-        <md-button hide-gt-md class="first" ng-click="closePaperInfo()" aria-label="close info">
-          <i class="flaticon flaticon-md flaticon-go10"></i>
-        </md-button>
-      </h2>
-      <p class="md-toolbar-tools md-toolbar-tools-bottom">Lorem ipsum dolor sit amet</p>
-    </md-toolbar>
     <md-content class="md-padding">
-      <pre>{{ papers | json:2 }}</pre>
+      <paper-info></paper-info>
     </md-content>
   </md-sidenav><!-- /.paper-info -->
 
