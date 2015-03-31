@@ -5,8 +5,14 @@ var Paper = require('./paper.model');
 
 // Get list of papers
 exports.index = function(req, res) {
-  Paper.find(function (err, papers) {
+  Paper.find({ status: 'active' }, function (err, papers) {
     if(err) { return handleError(res, err); }
+    // sort by updated date
+    papers.sort(function(a, b) {
+      a = new Date(a.updated);
+      b = new Date(b.updated);
+      return a>b ? -1 : a<b ? 1 : 0;
+    });
     return res.json(200, papers);
   })
   .populate("author", "name")
@@ -19,7 +25,9 @@ exports.show = function(req, res) {
     if(err) { return handleError(res, err); }
     if(!paper) { return res.send(404); }
     return res.json(paper);
-  });
+  })
+  .populate("author", "name")
+  .populate("collaborators.person.author", "name");
 };
 
 // Creates a new paper in the DB.
@@ -41,7 +49,9 @@ exports.update = function(req, res) {
       if (err) { return handleError(res, err); }
       return res.json(200, paper);
     });
-  });
+  })
+  .populate("author", "name")
+  .populate("collaborators.person.author", "name");
 };
 
 // Deletes a paper from the DB.
