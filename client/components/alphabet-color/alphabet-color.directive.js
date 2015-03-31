@@ -4,9 +4,13 @@ angular.module('smartPaperApp')
   .directive('alphabetColor', function ($mdColorPalette) {
     return {
       restrict: 'A',
+      multiElement: true,
+      scope: {
+        alphabetColor: '='
+      },
       link: function (scope, element, attrs) {
-        var colorDeep = (attrs.colorDeep) ? attrs.colorDeep : 400,
-            colorDeepMin = ( angular.isString( colorDeep ) ) ? (colorDeep.substr(1, 3) - 100) : colorDeep - 100,
+        var colorDeep = (attrs.colorDeep) ? attrs.colorDeep : 600,
+            colorDeepMin = ( angular.isNumber(colorDeep) ) ? parseInt(colorDeep) - 100 : ( parseInt(colorDeep.substr(1, 3)) - 100),
             colorDeepMin = ( colorDeepMin < 100 ) ? 50 : colorDeepMin,
             palette = {
           'a' : $mdColorPalette['red'][colorDeep],
@@ -37,17 +41,25 @@ angular.module('smartPaperApp')
           'z' : $mdColorPalette['light-blue'][colorDeepMin],
         };
 
-        var colors = palette[attrs.alphabetColor];
-        if (attrs.colorOnly) {
-          element.css({
-            color: 'rgb(' + colors.value[0] + ',' + colors.value[1] + ',' + colors.value[2] +')'
-          });
-        } else{
-          element.css({
-            backgroundColor: 'rgb(' + colors.value[0] + ',' + colors.value[1] + ',' + colors.value[2] +')',
-            color: 'rgba(' + colors.contrast[0] + ',' + colors.contrast[1] + ',' + colors.contrast[2] +',' + colors.contrast[3] +')'
-          });
-        }
+        scope.drawColor = function(colors){
+          if (attrs.colorOnly) {
+              element.css({
+                color: 'rgb(' + colors.value[0] + ',' + colors.value[1] + ',' + colors.value[2] +')'
+              });
+            } else{
+              element.css({
+                color: 'rgba(' + colors.contrast[0] + ',' + colors.contrast[1] + ',' + colors.contrast[2] +',' + colors.contrast[3] +')',
+                backgroundColor: 'rgb(' + colors.value[0] + ',' + colors.value[1] + ',' + colors.value[2] +')',
+              });
+            }
+        };
+
+        scope.$watch('alphabetColor', function(newValue, oldValue) {
+          if (newValue){
+            var colors = palette[angular.lowercase(scope.alphabetColor)];
+            scope.drawColor(colors);
+          }
+        }, false);
       }
     };
   });
