@@ -1,0 +1,31 @@
+<md-list>
+  <md-item>
+    <md-item-content style="align-items: baseline">
+      <div class="md-tile-left">
+        <a class="checker-tile"><span class="tile-text" alphabet-color="selectedPaper.title.charAt(0)">{{ selectedPaper.title.charAt(0) | uppercase }}</span>
+        </a>
+      </div>
+      <div class="md-tile-content">
+        <h3 class="paper-info-title">{{selectedPaper.title}}</h3>
+      </div>
+    </md-item-content>
+  </md-item>
+</md-list>
+<md-divider></md-divider>
+
+<p>{{ selectedPaper.description }}</p>
+
+<md-divider></md-divider>
+
+<div class="paper-info-details" layout="row" layout-wrap>
+  <p class="label-info-detait text-ellipsis" flex="30">Pemilik</p>
+  <p class="text-ellipsis" flex="70">{{ selectedPaper.author.name }}</p>
+
+  <p class="label-info-detait text-ellipsis" flex="30">Diubah</p>
+  <p class="text-ellipsis" flex="70">{{ selectedPaper.updated | date:'d MMM, yyyy' }}</p>
+
+  <p class="label-info-detait text-ellipsis" flex="30">Dibuat</p>
+  <p class="text-ellipsis" flex="70">{{ selectedPaper.created | date:'d MMM, yyyy' }}</p>
+</div>
+
+<md-divider></md-divider>
