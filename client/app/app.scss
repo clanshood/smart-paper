@@ -26,6 +26,7 @@
 // injector
 @import 'account/login/login.scss';
 @import 'admin/admin.scss';
+@import 'paper/paper-info/paper-info.scss';
 @import 'paper/paper-item/paper-item.scss';
 @import 'paper/paper.scss';
 @import 'menus/menus.scss';
@@ -127,4 +128,54 @@ md-divider[md-inset]{
 }
 .badge{
   border-radius: 24px;
+}
+
+
+// checker tile
+.checker-tile{
+  display: inline-block;
+
+  img{
+    width: 32px;
+    height: auto;
+    border-right: 32px;
+  }
+  .tile-text{
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    vertical-align: middle;
+    width: 32px;
+    line-height: 32px;
+    font-size: 16px;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: $swift-ease-in-out;
+    border: 1px solid transparent;
+
+    > *:first-child,
+    > *:last-child{
+      transition-delay: .2s;
+    }
+    > *:first-child{
+      visibility: visible;
+    }
+    > *:last-child{
+      visibility: hidden;
+    }
+  }
+  .tile-checked{
+    transform: scaleX(-1);
+    background-color: $base-darkgrey !important;
+    color: $base-light !important;
+    > *:first-child{
+      visibility: hidden;
+    }
+    > *:last-child{
+      transform: scaleX(-1);
+      visibility: visible;
+    }
+  }
 }
