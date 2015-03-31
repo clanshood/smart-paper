@@ -24,21 +24,12 @@ angular.module('smartPaperApp')
           route: '/apps'
         }]
       },
-      buttons: [
-        /* sample obj
-        {
-          label: 'Signup',
-          needAuth: false,
-          link: '/signup',
-          action: ''
-        }
-        */
-      ],
+      buttons: []
     };
 
     return{
       set: function(settings){
-        defaults = angular.extend(defaults, settings);
+        defaults = _.merge(defaults, settings);
         return defaults;
       },
       get: function(){
