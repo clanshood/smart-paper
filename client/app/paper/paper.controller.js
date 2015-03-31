@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('smartPaperApp')
-  .controller('PaperCtrl', function ($scope, $q, $http, Auth, User, Paper, $navbar, $mdSidenav, $mdMedia, $mdDialog, $mdToast, socket, relativeDate) {
+  .controller('PaperCtrl', function ($scope, $q, $http, Auth, User, Paper, $navbar, $mdSidenav, $mdMedia, $mdDialog, $mdToast, socket) {
     // navbar control
     // get default navbar
     $scope.navbar = $navbar.set({
@@ -70,15 +70,6 @@ angular.module('smartPaperApp')
     };
     $scope.closePaperInfo = function() {
       $mdSidenav('paper-info-sidenav').close();
-    };
-
-    // Dating
-    $scope.humanDate = function(d){
-      var dt;
-      relativeDate.set( d, function(relativeDate) {
-        dt = relativeDate;
-      });
-      return dt;
     };
 
     // paper items actions

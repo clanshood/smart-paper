@@ -21,11 +21,11 @@
       </div>
       <div flex-gt-lg hide-sm hide-md hide-lg><span class="badge" ng-repeat="badge in paper.badge" alphabet-color="badge.charAt(0)" color-deep="A100">{{ badge | uppercase }}</span></div>
       <div flex-gt-lg="10" hide-sm hide-md hide-lg><small class="text-secondary">{{ paper.author.name }}</small></div>
-      <div flex-gt-lg="10" hide-sm hide-md hide-lg><small class="text-secondary">{{ humanDate(paper.updated) }}</small></div>
+      <div flex-gt-lg="10" hide-sm hide-md hide-lg><small class="text-secondary">{{ paper.updated | amCalendar }}</small></div>
     </md-content>
   </div>
   <div class="paper-tile-right">
-    <p hide-gt-lg><small class="text-secondary">{{ humanDate(paper.updated) }}</small></p>
+    <p hide-gt-lg><small class="text-secondary">{{ paper.updated | amCalendar }}</small></p>
   </div>
 </div>
 <md-divider></md-divider>
