@@ -4,6 +4,7 @@
 .paper-table{
   overflow-y: auto;
   z-index: 1;
+  padding: 16px 0;
 }
 
 .paper-info-sidenav{
@@ -15,8 +16,7 @@
   }
 
   md-toolbar.md-default-theme{
-    background-color: #fafafa;
-    color: $base-darkgrey;
+    background-color: auto;
 
     .md-button{
       color: inherit;
