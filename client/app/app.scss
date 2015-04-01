@@ -1,20 +1,3 @@
-/**
- * App-wide Styles
- */
-.app{
-  overflow: hidden;
-  max-width: 100%;
-  max-height: 100%;
-}
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-  display: none !important;
-}
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
-}
 
 // Component styles are injected through grunt
 // ignore injector
@@ -26,6 +9,7 @@
 // injector
 @import 'account/login/login.scss';
 @import 'admin/admin.scss';
+@import 'paper/paper-creator/paper-creator.scss';
 @import 'paper/paper-info/paper-info.scss';
 @import 'paper/paper-item/paper-item.scss';
 @import 'paper/paper.scss';
@@ -36,7 +20,19 @@
 @import 'sidebar/sidebar.scss';
 // endinjector
 
-
+/**
+ * App-wide Styles
+ */
+.app{
+  overflow: hidden;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  background-color: #212121;
+}
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
 .browsehappy {
   margin: 0;
   padding: 8px 16px;
@@ -62,9 +58,19 @@
 }
 
 .app-content{
-  background-color: #EEEEEE;
+  // dont initialize position, its will be create issue on z-index
+  // position: relative;
+  display: flex !important;
+  height: 100%;
 }
 
+[ui-view].ng-enter {
+  position: absolute;
+  left: 0;
+  right: 0;
+  transition: $swift-ease-in-out;
+  transition-delay: .2s;
+}
 
 // md buttons
 .md-button-full{
@@ -119,6 +125,7 @@ md-divider[md-inset]{
   vertical-align: baseline;
   white-space: nowrap;
   text-align: center;
+  text-decoration: none;
   background-color: $base-border;
   border-radius: 2px;
 
@@ -155,14 +162,16 @@ md-divider[md-inset]{
     transition: $swift-ease-in-out;
     border: 1px solid transparent;
 
+    md-icon{vertical-align: baseline;}
+
     > *:first-child,
     > *:last-child{
       transition-delay: .2s;
     }
-    > *:first-child{
+    > *:first-child:not(i){
       visibility: visible;
     }
-    > *:last-child{
+    > *:last-child:not(i){
       visibility: hidden;
     }
   }
@@ -170,10 +179,10 @@ md-divider[md-inset]{
     transform: scaleX(-1);
     background-color: $base-darkgrey !important;
     color: $base-light !important;
-    > *:first-child{
+    > *:first-child:not(i){
       visibility: hidden;
     }
-    > *:last-child{
+    > *:last-child:not(i){
       transform: scaleX(-1);
       visibility: visible;
     }
