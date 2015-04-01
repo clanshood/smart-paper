@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('smartPaperApp')
-  .controller('PaperCtrl', function ($scope, $q, $http, Auth, User, Paper, $navbar, $mdSidenav, $mdMedia, $mdDialog, $mdToast, socket) {
+  .controller('PaperCtrl', function ($scope, $q, $timeout, $http, Auth, User, Paper, $navbar, $mdSidenav, $mdMedia, $mdDialog, $mdToast, socket) {
     // navbar control
     // get default navbar
     $scope.navbar = $navbar.set({
@@ -66,7 +66,10 @@ angular.module('smartPaperApp')
     // content control
     // content sidebar
     $scope.openPaperInfo = function() {
-      $mdSidenav('paper-info-sidenav').open();
+      // wait until ripple animate finish
+      $timeout(function(){
+        $mdSidenav('paper-info-sidenav').open();
+      }, 300);
     };
     $scope.closePaperInfo = function() {
       $mdSidenav('paper-info-sidenav').close();
