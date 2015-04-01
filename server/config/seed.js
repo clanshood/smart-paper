@@ -42,6 +42,7 @@ Paper.find({}).remove(function() {
         { question : "550943f5dea7f984072407df" }
       ]
     }],
+    timer: true,
     badge: ["XI IIA 2"],
     label: ["ipa", "matematika"],
     author: "550943f5dea7f984072407e0",
@@ -68,7 +69,8 @@ Paper.find({}).remove(function() {
     collaborators: [{
       person: [{ author: "550943f5dea7f984072407e0"},
         { author: "550943f5dea7f984072407df"}]
-    }]
+    }],
+    type: "private"
   },{
     title: "Gee our old Lasalle ran great",
     description: "Didn't need no welfare states. Gee our old Lasalle ran great. Those were the days.",
@@ -84,11 +86,7 @@ Paper.find({}).remove(function() {
     }],
     badge: ["XI IIA 2"],
     label: ["ipa", "matematika"],
-    author: "550943f5dea7f984072407e0",
-    collaborators: [{
-      person: [{ author: "550943f5dea7f984072407e0"},
-        { author: "550943f5dea7f984072407df"}]
-    }]
+    author: "550943f5dea7f984072407e0"
   },
   function() {
       console.log('finished populating paper');
