@@ -1,6 +1,6 @@
 .navbar{
   min-height: $app-bar-height;
-  z-index: 3;
+  z-index: $z-index-sidenav;
 }
 .app-bar{
   .md-toolbar-tools > *{

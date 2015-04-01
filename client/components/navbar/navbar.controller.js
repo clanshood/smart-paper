@@ -25,10 +25,6 @@ angular.module('smartPaperApp')
     };
 
     // optional properties
-    $scope.isLoggedIn = Auth.isLoggedIn;
-    $scope.isAdmin = Auth.isAdmin;
-    $scope.getCurrentUser = Auth.getCurrentUser;
-
     $scope.btnEvent = function(action){
       if (action || action !== '') {
         $scope.$eval(action)();
