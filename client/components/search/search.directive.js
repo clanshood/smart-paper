@@ -8,16 +8,14 @@ angular.module('smartPaperApp')
       controller: 'SearchCtrl',
       controllerAs: 'ctrl',
       link: function (scope, element, attrs) {
-        var body = document.querySelectorAll('body'),
-            backdrop = $compile('<md-backdrop class="search-backdrop md-opaque" ng-click="closeSearch()" ng-if="isOpenSearch">')(scope);
+        var backdrop = $compile('<md-backdrop class="search-backdrop md-opaque" ng-click="closeSearch()" ng-if="isOpenSearch">')(scope);
 
         element.addClass('app-search');
         element.attr('tabIndex', '-1');
         element.focus();
         angular.element(backdrop);
         // add backdrop to document body
-        angular.element(body).append(backdrop);
-        // element.prepend(backdrop);
+        element.parent().parent().parent().parent().append(backdrop);
 
        /**
          * Auto-close sideNav when the `escape` key is pressed.
