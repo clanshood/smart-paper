@@ -14,7 +14,7 @@
   <md-content>
     <ul class="sidebar-menu">
       <li class="menu-list" md-ink-ripple="#aaa" md-ripple-size="full" ng-repeat="menu in menus" ng-class="{active: isActive(menu.route)}">
-        <a ng-href="{{menu.route}}">
+        <a ui-sref="{{menu.route}}">
           <span class="menu-icon"><i class="{{menu.icon}}"></i></span>
           <span class="menu-label">{{menu.label}}</span>
         </a>

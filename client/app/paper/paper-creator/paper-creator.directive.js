@@ -5,16 +5,17 @@ angular.module('smartPaperApp')
     return {
       restrict: 'A',
       link: function (scope, element, attrs) {
+        var cards = document.querySelectorAll('pc-card');
 
-        element.on('click', function(){
-          var isExpand = element.hasClass('expand'),
-              cards = document.querySelectorAll('.pc-card');
+        element.find('pc-card-header').on('click', function(e){
+          console.log(e.target);
+          var isExpand = element.hasClass('expand');
 
           if (isExpand) {
             element.removeClass('expand');
-            element.addClass('active');
+            element.addClass('focus');
           } else{
-            angular.element(cards).removeClass('active expand');
+            angular.element(cards).removeClass('focus expand');
             element.addClass('expand');
           }
         });

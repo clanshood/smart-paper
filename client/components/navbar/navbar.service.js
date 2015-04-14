@@ -7,6 +7,7 @@ angular.module('smartPaperApp')
       scrollShrink: false,
       scrollShrinkSpeed: 0.5,
       isSidenavControll: true,
+      isBackBtn: false,
       isSearchBtn: true,
       brand: 'Smart Paper',
       size: '',

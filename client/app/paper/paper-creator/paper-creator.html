@@ -1,37 +1,86 @@
-<!-- .paper-app -->
-<md-content class="paper-creator" ng-if="isLoggedIn() && isAdmin()" layout="row" layout-fill flex>
+<!--paper-creator -->
+<md-content ng-if="isLoggedIn() && isAdmin()" layout="row" layout-fill flex>
   <!-- .paper-table -->
   <div layout="column" flex>
     <!-- define app navbar -->
     <navbar></navbar>
 
-    <div layout="row" layout-align="center star" layout-wrap>
-      <div class="pc-card" paper-creator>
-        <div class="pc-card-header">
-          <p>Halaman Soal</p>
-        </div>
-        <div class="pc-card-content">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores adipisci rerum animi modi maiores. Eveniet aspernatur placeat voluptate aliquam, reprehenderit! Asperiores, perspiciatis molestias! Consequatur quia delectus tenetur quis iste, magnam?
-        </div>
-      </div>
+    <div class="paper-creator" layout="column" flex>
+      <form name="paperCreatorForm">
+        <!-- Paper Card -->
+        <pc-card class="pc-card" paper-creator>
+          <pc-card-header>
+            <p class="pull-right helper-text">Click disini untuk membuka form</p>
+            <p>Pengaturan Paper</p>
+          </pc-card-header>
+          <pc-card-content>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores adipisci rerum animi modi maiores. Eveniet aspernatur placeat voluptate aliquam, reprehenderit! Asperiores, perspiciatis molestias! Consequatur quia delectus tenetur quis iste, magnam?
+          </pc-card-content>
+        </pc-card><!-- /Paper Card -->
 
-      <div class="pc-card expand" paper-creator>
-        <div class="pc-card-header">
-          <p>Pengaturan Paper</p>
-        </div>
-        <div class="pc-card-content">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores adipisci rerum animi modi maiores. Eveniet aspernatur placeat voluptate aliquam, reprehenderit! Asperiores, perspiciatis molestias! Consequatur quia delectus tenetur quis iste, magnam?
-        </div>
-      </div>
+        <!-- Question Card -->
+        <pc-card class="expand" paper-creator>
+          <pc-card-header>
+            <p class="pull-right helper-text">Click disini untuk membuka form</p>
+            <p>Halaman Soal</p>
+          </pc-card-header>
+          <pc-card-content>
+            <md-input-container>
+              <label>Judul Paper</label>
+              <input name="paperTitle" type="text" ng-model="paper.paperTitle" minlength="10" md-maxlength="100">
+              <div ng-messages="paperCreatorForm.paper.paperTitle.$error">
+                <div ng-message="md-maxlength">Judul terlalu panjang!</div>
+                <div ng-message="minlength">Masih terlalu pendek, teruslah mengetik!</div>
+              </div>
+            </md-input-container><!-- /paperTitle -->
+            <md-input-container>
+              <label>Descripsi</label>
+              <textarea name="paperDescription" ng-model="paper.description" columns="1" md-maxlength="225"></textarea>
+            </md-input-container><!-- /description -->
 
-      <div class="pc-card active" paper-creator>
-        <div class="pc-card-header">
-          <p>Pengaturan Hasil</p>
-        </div>
-        <div class="pc-card-content">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores adipisci rerum animi modi maiores. Eveniet aspernatur placeat voluptate aliquam, reprehenderit! Asperiores, perspiciatis molestias! Consequatur quia delectus tenetur quis iste, magnam?
-        </div>
-      </div>
-    </div>
-  </div>
-</md-content>
+            <div class="qustions-container">
+              <div class="pull-right question-actions">
+                <md-button class="md-icon-button text-secondary" aria-label="Ubah">
+                  <md-icon md-font-icon="flaticon flaticon-md flaticon-create3"></md-icon>
+                  <md-tooltip class="">Ubah</md-tooltip>
+                </md-button>
+                <md-button class="md-icon-button text-secondary" aria-label="Duplikasi">
+                  <md-icon md-font-icon="flaticon flaticon-md flaticon-copy31"></md-icon>
+                  <md-tooltip class="">Duplikasi</md-tooltip>
+                </md-button>
+                <md-button class="md-icon-button text-secondary" aria-label="Hapus">
+                  <md-icon md-font-icon="flaticon flaticon-md flaticon-cancel19"></md-icon>
+                  <md-tooltip class="">Hapus</md-tooltip>
+                </md-button>
+              </div>
+              <div class="question-content">
+                <p class="text-ellipsis">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque molestias aperiam, quos perspiciatis totam odit?</p>
+                <ol type="a">
+                  <li>sakjh s</li>
+                  <li>sakjh s</li>
+                  <li>sakjh s</li>
+                </ol>
+              </div>
+            </div><!-- /.qustions-container -->
+
+            <div style="margin-top:16px">
+              <md-button ng-click="showQuestionForm()">Tambahkan lagi</md-button>
+              <md-button class="md-accent">Ambil dari gudang</md-button>
+            </div>
+          </pc-card-content>
+        </pc-card><!-- /Question Card -->
+
+        <!-- Result Card -->
+        <pc-card class="pc-card" paper-creator>
+          <pc-card-header>
+            <p class="pull-right helper-text">Click disini untuk membuka form</p>
+            <p>Pengaturan Hasil</p>
+          </pc-card-header>
+          <pc-card-content>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores adipisci rerum animi modi maiores. Eveniet aspernatur placeat voluptate aliquam, reprehenderit! Asperiores, perspiciatis molestias! Consequatur quia delectus tenetur quis iste, magnam?
+          </pc-card-content>
+        </pc-card><!-- /Result Card -->
+      </form><!-- /paperCreatorForm -->
+    </div><!-- /[layout-wrap] -->
+  </div><!-- /layout[column] -->
+</md-content><!-- /.paper-creator

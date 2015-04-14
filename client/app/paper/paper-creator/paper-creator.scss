@@ -1,18 +1,28 @@
 md-content.paper-creator,
-paper-creator{
+.paper-creator{
   background-color: $base-background;
+  overflow: auto;
+
+  form{
+    margin: ($baseline-grid*2) auto;
+    width: 100%;
+  }
 }
 
-.pc-card{
+pc-card{
   position: relative;
-  margin: $baseline-grid auto;
+  display: block;
+  margin: ($baseline-grid*2) auto;
   background-color: #ffffff;
-  border-left: 2px solid transparent;
-  border-radius: 2px;
-  width: 924px;
+  width: 960px;
+  transform: scaleX(.9);
   max-width: 100%;
   box-shadow: $whiteframe-shadow-z1;
-  transition: transform .2s $swift-ease-in-out-timing-function;
+  transition: all .2s $swift-ease-in-out-timing-function;
+
+  paper-card{
+    width: auto;
+  }
 
   &:first-child{
     margin-top: ($baseline-grid*2);
@@ -21,45 +31,91 @@ paper-creator{
     margin-bottom: ($baseline-grid*2);
   }
 
-  .pc-card-header{
+  pc-card-header{
+    display: block;
     padding: $baseline-grid ($baseline-grid*2);
-    border-bottom: 1px solid transparent;
+    border-left: 2px solid transparent;
     cursor: pointer;
-    // transition: $swift-ease-in-out;
+    user-select: none;
+
+    .helper-text{
+      font-size: 13px;
+      line-height: 2;
+      color: $base-darkgrey;
+      font-style: italic;
+    }
 
     p{
       margin: 0;
     }
   }
 
-  .pc-card-content{
+  pc-card-content{
+    display: block;
     max-height: 0;
     padding: 0 ($baseline-grid*2);
+    border-top: 1px solid $base-border;
     overflow: hidden;
     visibility: hidden;
     // transition: $swift-ease-in-out;
   }
 
-  &.active{
-    border-left-color: $base-accent;
+  &.focus{
+    pc-card-header {
+      border-left-color: $base-accent;
+    }
   }
 
   &.expand{
-    // width: 960px;
-    margin-top: ($baseline-grid*2);
-    margin-bottom: ($baseline-grid*2);
-    transform: scale(1.1, 1.1);
-
-    .pc-card-header{
-      border-bottom-color: $base-border;
-      cursor: default;
+    margin-top: ($baseline-grid*4);
+    margin-bottom: ($baseline-grid*4);
+    box-shadow: $whiteframe-shadow-z2;
+    transform: scale(1);
+    &:first-child{
+      margin-top: ($baseline-grid*2.5);
     }
-    .pc-card-content{
-      max-height: 1000px;
+
+    pc-card-header{
+      cursor: default;
+      pointer-events: auto;
+      .helper-text{display: none}
+    }
+    pc-card-content{
+      max-height: 10000px;
       padding: ($baseline-grid*2);
-      font-size: 14px;
       overflow: auto;
       visibility: visible;
+      font-size: .9em;
+    }
+  }
+}
+
+.qustions-container{
+  position: relative;
+  display: block;
+  padding: $baseline-grid ($baseline-grid*2);
+  margin: ($baseline-grid*2) (-$baseline-grid*2) 0;
+  cursor: pointer;
+  transition: all .2s $swift-ease-in-out-timing-function;
+  overflow-x:hidden;
+
+  & + &{
+    margin-top: 0;
+  }
+
+  .question-actions{
+    display: block;
+    margin-top: $baseline-grid;
+    transition: all .2s $swift-ease-in-out-timing-function;
+    transform: translateY(-180%);
+    visibility: hidden;
+  }
+  &:hover{
+    background-color: rgba(black, .05);
+
+    .question-actions{
+      visibility: visible;
+      transform: translateY(0);
     }
   }
 }

@@ -1,17 +1,17 @@
-<p>{{ selectedPaper.description }}</p>
+<p>{{ paper.description }}</p>
 
 <md-divider></md-divider>
 
 <div class="paper-info-details" layout="row" layout-wrap>
   <p class="text-ellipsis" flex="35">Pemilik</p>
-  <p class="label-info-detail text-ellipsis" flex="65">{{ (selectedPaper.author.name === user.name) ? 'saya' : selectedPaper.author.name }}</p>
+  <p class="label-info-detail text-ellipsis" flex="65">{{ (paper.author.name === user.name) ? 'saya' : paper.author.name }}</p>
 
   <p class="text-ellipsis" flex="35">Muatan</p>
-  <p class="label-info-detail text-ellipsis" flex="65"><a href="#" class="label">{{ selectedPaper.questions[0].fill.length }} soal</a href="#"></p>
+  <p class="label-info-detail text-ellipsis" flex="65"><a href="#" class="label">{{ paper.questions[0].fill.length }} soal</a href="#"></p>
 
   <p class="text-ellipsis" flex="35">Waktu</p>
-  <p class="label-info-detail text-ellipsis" ng-if="selectedPaper.timer" flex="65">{{ selectedPaper.timeLimit }} menit</p>
-  <p class="label-info-detail text-ellipsis" ng-if="!selectedPaper.timer" flex="65" aria-label="tidak terbatas">
+  <p class="label-info-detail text-ellipsis" ng-if="paper.timer" flex="65">{{ paper.timeLimit }} menit</p>
+  <p class="label-info-detail text-ellipsis" ng-if="!paper.timer" flex="65" aria-label="tidak terbatas">
     <span>
       <img style="vertical-align:middle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAAXwAAAF8BKp7tHQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACdSURBVDiN7dOhbsNgDATgz9FQWUjQ4HDfp9KKMvWpCgL2QNPKqsJJwR1YoEccKWDsHxiYJZPznS2f5chMLdE1qf9EgweIiB1esMcHXjPztiVGxBOe8Yh3nDPzCwZccMeEKz5xyExl8qGwa3HupRkU8Ia+yB1OWHCsXArritOXZoIZ4zptM3UVLjj+UB8xN5v4Kys0mRiZ2XTG+P8F3zeGdYn63blYAAAAAElFTkSuQmCCe4dcb74878e9295b76a12c5e298af020"/>
       <md-tooltip>tidak terbatas</md-tooltip>
@@ -19,35 +19,35 @@
   </p>
 
   <p class="text-ellipsis" flex="35">Penyajian</p>
-  <p class="label-info-detail text-ellipsis" flex="65">{{ (selectedPaper.randomization) ? 'acak' : 'teratur' }}</p>
+  <p class="label-info-detail text-ellipsis" flex="65">{{ (paper.randomization) ? 'acak' : 'teratur' }}</p>
 
   <p class="text-ellipsis" flex="35">Koreksi</p>
-  <p class="label-info-detail text-ellipsis" flex="65">{{ (selectedPaper.submition == 'all') ? 'per paper' : 'per soal' }}</p>
+  <p class="label-info-detail text-ellipsis" flex="65">{{ (paper.submition == 'all') ? 'per paper' : 'per soal' }}</p>
 
   <p class="text-ellipsis" flex="35">Batas Remidi</p>
-  <p class="label-info-detail text-ellipsis" flex="65">{{ selectedPaper.passingRate }} point</p>
+  <p class="label-info-detail text-ellipsis" flex="65">{{ paper.passingRate }} point</p>
 
   <p class="text-ellipsis" flex="35">Diubah</p>
-  <p class="label-info-detail text-ellipsis" flex="65">{{ selectedPaper.updated | amTimeAgo }}</p>
+  <p class="label-info-detail text-ellipsis" flex="65">{{ paper.updated | amTimeAgo }}</p>
 
   <p class="text-ellipsis" flex="35">Dibuat</p>
-  <p class="label-info-detail text-ellipsis" flex="65">{{ selectedPaper.created | amTimeAgo }}</p>
+  <p class="label-info-detail text-ellipsis" flex="65">{{ paper.created | amTimeAgo }}</p>
 </div>
 
 <md-divider></md-divider>
 
 <div>
-  <p class="text-ellipsis" flex="100" ng-if="selectedPaper.type === 'private'">
+  <p class="text-ellipsis" flex="100" ng-if="paper.type === 'private'">
     <a class="checker-tile color-secondary"><span class="tile-text"><i class="flaticon flaticon-md flaticon-locked57"></i></span></a> Hanya Untuk Saya
   </p>
-  <p class="text-ellipsis" flex="100" ng-if="selectedPaper.type === 'public'">
+  <p class="text-ellipsis" flex="100" ng-if="paper.type === 'public'">
     <a class="checker-tile color-secondary"><span class="tile-text"><i class="flaticon flaticon-md flaticon-unlocked43"></i></span></a> Untuk Semua Orang
   </p>
 </div>
 
 <md-divider></md-divider>
 
-<div ng-if="selectedPaper.collaborators[0].person.length">
+<div ng-if="paper.collaborators[0].person.length">
   <p class="text-ellipsis color-secondary" flex="100">Kolaborator</p>
-  <a href="#" class="badge" ng-repeat="person in selectedPaper.collaborators[0].person">{{person.author.name}}</a>
+  <a href="#" class="badge" ng-repeat="person in paper.collaborators[0].person">{{person.author.name}}</a>
 </div>

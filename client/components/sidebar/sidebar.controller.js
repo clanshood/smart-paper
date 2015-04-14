@@ -3,7 +3,7 @@
 angular.module('smartPaperApp')
   .controller('SidebarCtrl', function ($scope, $window, $location, Auth) {
     $scope.menus = [
-      { label: 'Repositori', icon: 'flaticon flaticon-md flaticon-briefcase50', route: '/repositori' },
+      { label: 'Paper', icon: 'flaticon flaticon-md flaticon-briefcase50', route: 'paper' },
       { label: 'Repositori', icon: 'flaticon flaticon-md flaticon-briefcase50', route: '/repositori' },
       { label: 'Repositori', icon: 'flaticon flaticon-md flaticon-briefcase50', route: '/' },
       { label: 'Repositori', icon: 'flaticon flaticon-md flaticon-briefcase50', route: '/repositori' }

@@ -33,7 +33,7 @@
           </div><!-- /paper-list -->
 
           <!-- if:empty content -->
-          <div class="empty-paper-content ng-cloak" ng-if="!papers.length" ng-class="velocity-transition-fadeIn" layout="column" layout-align="center center" flex>
+          <div class="empty-paper-content" ng-if="!papers.length" ng-class="velocity-transition-fadeIn" layout="column" layout-align="center center" flex>
             <div class="text-secondary" style="font-size:128px"><i class="{{ empty.icon }}"></i></div>
             <h3>{{ empty.label }}</h3>
             <div class="text-secondary">{{ empty.description }}</div>
@@ -41,27 +41,20 @@
         </md-content><!-- /paper-content -->
 
         <!-- floating-actions -->
-        <md-button href="paper/baru" class="md-fab md-accent md-fab-bottom-right" aria-label="buat paper baru">
-          <md-icon md-font-icon="flaticon flaticon-md flaticon-add186" style="line-height:48px;"></md-icon>
+        <md-button ui-sref="paper.creator" class="md-fab md-accent md-fab-bottom-right" aria-label="buat paper baru">
+          <md-icon md-font-icon="flaticon flaticon-md flaticon-add186"></md-icon>
         </md-button><!-- /floating-actions -->
       </md-content><!-- /.paper-table -->
 
-      <md-content class="paper-info md-padding velocity-transition-fadeIn" ng-animate="'view'" layout="column" ng-show="papers.length" hide-sm hide-md hide-lg>
-        <md-list>
-          <md-item>
-            <md-item-content style="align-items: baseline">
-              <div class="md-tile-left">
-                <a class="checker-tile"><span class="tile-text" alphabet-color="selectedPaper.title.charAt(0)">{{ selectedPaper.title.charAt(0) | uppercase }}</span>
-                </a>
-              </div>
-              <div class="md-tile-content">
-                <h3 class="paper-info-title">{{selectedPaper.title}}</h3>
-              </div>
-            </md-item-content>
-          </md-item>
-        </md-list>
-        <md-divider></md-divider>
-        <paper-info ng-animate></paper-info>
+      <md-content class="paper-info md-padding" layout="column" layout-fill ng-show="papers.length" hide-sm hide-md hide-lg>
+        <div class="velocity-transition-fadeIn" ui-view="paperItem" layout="column" style="display:flex" flex>
+          <!-- if:empty content -->
+          <div class="empty-paper-content" ng-class="velocity-transition-fadeIn" layout="column" layout-align="center center" flex>
+            <div class="text-secondary" style="font-size:72px"><i class="flaticon flaticon-notifications1"></i></div>
+            <h3>Tidak Ada Paper Terpilih</h3>
+            <div class="text-secondary">Klik pada daftar paper untuk melihat detail</div>
+          </div><!-- /empty content -->
+        </div>
       </md-content>
     </md-content><!-- .paper-content -->
   </md-content><!-- /wrapper -->

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('smartPaperApp')
-  .controller('PaperCtrl', function ($scope, $q, $timeout, $http, Auth, User, Paper, $navbar, $mdSidenav, $mdMedia, $mdDialog, $mdToast, socket) {
+  .controller('PaperCtrl', function ($scope, $q, $state, $timeout, $http, Auth, User, Paper, $navbar, $mdSidenav, $mdMedia, $mdDialog, $mdToast, socket) {
     // navbar control
     // get default navbar
     $scope.navbar = $navbar.set({
@@ -40,7 +40,7 @@ angular.module('smartPaperApp')
     };
 
     // navbar buttons
-    // required this fn if btn is defined
+    // required this fn if navbat.buttons is defined
     $scope.btnEvent = function(action){
       if (action || action !== '') {
         $scope.$eval(action)($scope);
@@ -76,27 +76,7 @@ angular.module('smartPaperApp')
     };
 
     // paper items actions
-    $scope.selectedPaper = null;
     $scope.checkedPaper = [];
-
-    /**
-     * set paper that selected by user
-     *
-     * @param {Object} paper
-     */
-    $scope.setSelectedPaper = function(paper){
-      $scope.selectedPaper = paper;
-    };
-
-    /**
-     * check if paper was selected or not then toggle it
-     *
-     * @param  {String}  pid
-     * @return {Boolean}
-     */
-    $scope.isSelected = function(pid){
-      return ($scope.selectedPaper._id === pid);
-    };
 
     $scope.isChecked = function(pid){
       var ids = [];
@@ -114,21 +94,30 @@ angular.module('smartPaperApp')
 
 
     $scope.getPaperInfo = function(paper){
-      $scope.setSelectedPaper(paper);
 
-      if (!$mdMedia('gt-lg')) {
-        $scope.openPaperInfo();
+      if (!$mdMedia('gt-lg')){
+        $mdSidenav('paper-info-sidenav').open();
       };
-      // console.log($scope.selectedPaper);
-
-      // grab paper/:id && questions/:pid
     };
 
     // Grab the initial set of available papers
-    Paper.selectAll($scope, function(papers){
-      if (papers.length)
-        $scope.setSelectedPaper(papers[0]);
-    });
+    Paper.selectAll($scope);
+    $scope.selectedpaper = {};
+
+    $scope.selectPaper = function(pid){
+      var paper = $q.defer();
+      $scope.selectedpaper = $q.defer();
+      Paper.selectPaper(pid, function(data){
+        if (data.status === 404) {
+          $state.go('paper'); // go to paper
+        } else{
+          paper.resolve(data);
+          $scope.selectedpaper.resolve(data);
+        }
+      });
+      $scope.selectedpaper.promise;
+      return paper.promise;
+    };
 
     // remove (mean move paper to trash until user cleaning the trash) paper from database by seleted from user
     $scope.removePaper = function($scope){

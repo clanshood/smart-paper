@@ -16,10 +16,10 @@ angular.module('smartPaperApp', [
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $mdThemingProvider) {
     $stateProvider
-      .state('landing', {
+      .state('dashboard', {
         url: '/',
-        templateUrl: 'app/paper/paper.html',
-        controller: 'PaperCtrl',
+        templateUrl: 'app/admin/admin.html',
+        controller: 'AdminCtrl',
         authenticate: true
       });
     $urlRouterProvider

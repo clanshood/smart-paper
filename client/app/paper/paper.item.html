@@ -1,0 +1,17 @@
+<div>
+  <md-list>
+  <md-item>
+    <md-item-content style="align-items: baseline">
+      <div class="md-tile-left">
+        <a class="checker-tile"><span class="tile-text" alphabet-color="paper.title.charAt(0)">{{ paper.title.charAt(0) | uppercase }}</span>
+        </a>
+      </div>
+      <div class="md-tile-content">
+        <h3 class="paper-info-title">{{paper.title}}</h3>
+      </div>
+    </md-item-content>
+  </md-item>
+</md-list>
+<md-divider></md-divider>
+<paper-info ng-animate></paper-info>
+</div>

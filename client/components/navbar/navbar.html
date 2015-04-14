@@ -1,15 +1,21 @@
 <md-toolbar class="app-bar md-primary" md-scroll-shrink="{{navbar.scrollShrink}}" md-shrink-speed-factor="{{navbar.scrollShrinkSpeed}}">
   <div class="md-toolbar-tools">
     <!-- rendering navbar sidebar control:ifany -->
-    <md-button class="first"
+    <md-button class="first md-icon-button"
         aria-label="toggle sidebar"
-        ng-if="navbar.isSidenavControll"
+        ng-if="navbar.isSidenavControll && !navbar.isBackBtn"
         ng-click="toggleSidenav()">
             <md-icon md-font-icon="flaticon flaticon-md flaticon-menu55" alt="toggle sidebar"></md-icon>
     </md-button>
+    <!-- back button -->
+    <md-button class="first md-icon-button"
+        aria-label="Kembali"
+        ng-if="navbar.isBackBtn">
+            <md-icon md-font-icon="flaticon flaticon-md flaticon-left216" alt="kembali"></md-icon>
+    </md-button>
 
     <!-- rendering navbar brand -->
-    <span>{{ navbar.brand }}</span>
+    <span ng-class="{'back-btn-txt': navbar.isBackBtn}">{{ navbar.brand }}</span>
     <!-- fill up the space between left and right area -->
 
     <search ng-class="{'velocity-transition-fadeIn': isOpenSearch}" ng-show="isOpenSearch"></search>
@@ -18,9 +24,8 @@
     <span flex></span>
 
     <!-- rendering navbar btn -->
-    <md-button class="ng-cloak" ng-cloak ng-repeat="btn in navbar.buttons"
+    <md-button class="md-icon-button" ng-cloak ng-repeat="btn in navbar.buttons"
         ng-if="btn.needAuth"
-        ng-href="{{btn.link}}"
         ng-click="btnEvent(btn.action.ngClick)"
         ng-class="{{btn.action.ngClass}}"
         ng-show="{{btn.action.ngShow}}"
@@ -29,7 +34,7 @@
         ng-bind-html="btn.label"><md-tooltip>{{ btn.tooltip }}</md-tooltip></md-button>
 
     <!-- rendering navbar search -->
-    <md-button ng-if="navbar.isSearchBtn"
+    <md-button class="md-icon-button" ng-if="navbar.isSearchBtn"
         ng-keydown="closeEsc($event)"
         ng-click="openSearch()"
         aria-label="search"><md-icon md-font-icon="flaticon flaticon-md flaticon-search100" alt="search"></md-icon></md-button>

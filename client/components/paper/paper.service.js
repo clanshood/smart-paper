@@ -41,6 +41,15 @@ angular.module('smartPaperApp')
           return cb(scope.papers);
         }).$promise;
       },
+      selectPaper: function(paperId, callback){
+        var cb = callback || angular.noop;
+
+        $http.get('/api/papers/' + paperId).then(function(paper){
+          return cb(paper.data);
+        }, function(err){
+          return cb(err);
+        }).$promise;
+      },
       moveTo: function( paper, target, callback ){
         var id = paper._id,
             cb = callback || angular.noop;

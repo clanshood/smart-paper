@@ -1,15 +1,15 @@
-<div class="paper-item" layout="row" ng-class="{'selected': isSelected(paper._id), 'checked': isChecked(paper._id)}">
-  <div class="paper-tile-left">
-    <div class="checker-tile">
-      <a class="tile-text" ng-click="checker(paper)" ng-class="{'tile-checked': isChecked(paper._id)}" alphabet-color="paper.title.charAt(0)">
+<a class="paper-item" layout="row" ui-sref-active="selected" ng-class="{'checked': isChecked(paper._id)}" ng-click="getPaperInfo(paper)" ui-sref="paper.details({paperId:paper._id})"> <!-- {'selected': isSelected(paper._id) -->
+  <span class="paper-tile-left">
+    <span class="checker-tile">
+      <span class="tile-text" ng-click="checker(paper)" ng-class="{'tile-checked': isChecked(paper._id)}" alphabet-color="paper.title.charAt(0)">
         <span ng-hide="isChecked(paper._id)">{{ paper.title.charAt(0) | uppercase }}</span>
         <md-icon ng-show="isChecked(paper._id)" md-font-icon="flaticon flaticon-check52"></md-icon>
-      </a>
-    </div>
-  </div>
-  <div class="paper-tile-content" ng-click="getPaperInfo(paper)" md-ink-ripple="#aaa" md-ripple-size="full" flex>
+      </span>
+    </span>
+  </span>
+  <span class="paper-tile-content" md-ink-ripple="#aaa" md-ripple-size="full" flex> <!-- ng-click="getPaperInfo(paper)" -->
     <md-content layout="row" layout-wrap>
-      <div flex="100" flex-gt-lg="55">
+      <span flex="100" flex-gt-lg="55">
         <p class="text-ellipsis">{{ paper.title }}</p>
         <p class="text-ellipsis"><small hide-gt-lg>{{ paper.description }}</small></p>
         <p hide-sm hide-md hide-lg>
@@ -18,14 +18,14 @@
         <p class="text-ellipsis" hide-gt-lg>
           <small class="text-secondary">Oleh <strong>{{paper.author.name}}</strong> untuk <strong ng-repeat="badge in paper.badge">{{ badge | uppercase }} <span ng-if="!$last">, </span></strong></small>
         </p>
-      </div>
-      <div flex-gt-lg hide-sm hide-md hide-lg><span class="badge" ng-repeat="badge in paper.badge" alphabet-color="badge.charAt(0)" color-deep="A100">{{ badge | uppercase }}</span></div>
-      <div flex-gt-lg="10" hide-sm hide-md hide-lg><small class="text-secondary">{{ paper.author.name }}</small></div>
-      <div flex-gt-lg="10" hide-sm hide-md hide-lg><small class="text-secondary">{{ paper.updated | amTimeAgo }}</small></div>
+      </span>
+      <span flex-gt-lg hide-sm hide-md hide-lg><span class="badge" ng-repeat="badge in paper.badge" alphabet-color="badge.charAt(0)" color-deep="A100">{{ badge | uppercase }}</span></span>
+      <span flex-gt-lg="10" hide-sm hide-md hide-lg><small class="text-secondary">{{ paper.author.name }}</small></span>
+      <span flex-gt-lg="10" hide-sm hide-md hide-lg><small class="text-secondary">{{ paper.updated | amTimeAgo }}</small></span>
     </md-content>
-  </div>
-  <div class="paper-tile-right">
+  </span>
+  <span class="paper-tile-right">
     <p hide-gt-lg><small class="text-secondary">{{ paper.updated | amTimeAgo }}</small></p>
-  </div>
-</div>
+  </span>
+</a>
 <md-divider></md-divider>
